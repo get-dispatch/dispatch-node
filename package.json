@@ -1,0 +1,33 @@
+{
+  "name": "dispatch-node",
+  "version": "0.0.4",
+  "description": "The node wrapper for the dispatch API.",
+  "main": "lib/dispatch.js",
+  "scripts": {
+    "doc": "jsdoc -c jsdoc.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/get-dispatch/dispatch-node.git"
+  },
+  "keywords": [
+    "dispatch, courier, carrier, usps, shipment"
+  ],
+  "author": "Dispatch",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/get-dispatch/dispatch-node/issues"
+  },
+  "homepage": "https://github.com/get-dispatch/dispatch-node#readme",
+  "contributors": [
+    "Valentin Panyushenko",
+    "Vlad Pasculescu"
+  ],
+  "devDependencies": {
+    "better-docs": "^2.3.2",
+    "jsdoc": "^3.6.6"
+  },
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}
