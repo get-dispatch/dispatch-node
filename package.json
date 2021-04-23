@@ -4,7 +4,7 @@
   "description": "The node wrapper for the dispatch API.",
   "main": "lib/dispatch.js",
   "scripts": {
-    "doc": "jsdoc -c jsdoc.json"
+    "doc": "jsdoc -c jsdoc.json --readme ./README.md"
   },
   "repository": {
     "type": "git",
