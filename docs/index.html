@@ -99,6 +99,78 @@
 
 
 
+    <section>
+        <article><h1>Dispatch Sender Node.js Library</h1>
+<p>The Dispatch Sender Node library provides convenient access to the Dispatch Sender API from applications written in server-side JavaScript.</p>
+<h2>Installation</h2>
+<p>Install the package with:</p>
+<pre class="prettyprint source lang-sh"><code>npm install dispatch-node --save
+</code></pre>
+<h2>Usage</h2>
+<p>The package needs to be configured with your account's API Key, which is
+available in the <a href="https://app.getdispatch.app/settings/api">Dispatch Dashboard</a>.</p>
+<pre class="prettyprint source lang-js"><code>const Dispatch = require(&quot;dispatch-node&quot;);
+const dispatch = new Dispatch(&quot;YOUR_API_KEY&quot;);
+
+dispatch.deliveries
+  .list()
+  .then((response) => console.log(response.data))
+  .catch((error) => console.error(error));
+</code></pre>
+<p>Or using ES modules and <code>async</code>/<code>await</code>:</p>
+<pre class="prettyprint source lang-js"><code>import Dispatch from &quot;dispatch-node&quot;;
+const dispatch = new Stripe(&quot;YOUR_API_KEY&quot;);
+
+(async () => {
+  const response = await dispatch.deliveries.list();
+
+  console.log(response.data);
+})();
+</code></pre>
+<h3>Using Promises</h3>
+<p>Every method returns a chainable promise which can be used instead of a regular callback:</p>
+<pre class="prettyprint source lang-js"><code>// Create a new delivery and then select the cheapest rate to purchase
+
+const sender = {
+   name: &quot;Dispatch Roasters&quot;
+   email: roasters@getdispatch.app,
+   address_id: &quot;addr_j83498fhweofh4937fh&quot;
+}
+
+const recipient = {
+   name: &quot;Jamie Jones&quot;
+   email: jamie.jones@getdispatch.app,
+   address: {
+       address_line1: &quot;500 7th Ave&quot;,
+       city: &quot;New York&quot;,
+       state: &quot;NY&quot;
+       zipcode: &quot;10018&quot;
+    }
+}
+
+const parcel = {
+   length: 10 // inches
+   width: 10 // inches
+   height: 10 // inches
+   weight: 10 // pounds
+}
+
+dispatch.deliveries
+  .create(sender, recipient, [parcel])
+  .then(response => {
+      const delivery = response.data
+
+      //filter for the cheapest rate
+      const rate = delivery.rates.reduce((a, b) => Math.min(a, b));
+      return dispatch.deliveries.buy(delivery.id, rate.id)
+  }).then(response => {
+      //new delivery was created
+  }).catch(err => {
+      //deal with the error
+  })
+</code></pre></article>
+    </section>
+
 
 
 

@@ -134,7 +134,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line21">line 21</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line27">line 27</a>
             </span>
         </p>
     
@@ -168,6 +168,967 @@
 
 
     
+    <h4 class="name" id=".buy">
+        <a class="href-link" href="#.buy">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                buy<span class="signature">(delivery_id, rate_id, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Response">Response</a>>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Purchased a shipping label</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+            <th>Attributes</th>
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>delivery_id</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>The ID of the delivery for which you want to purchase a rate</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>rate_id</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>The ID of the rate tha you wish to purchase</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>options</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Object</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>Additional options you want to add while purchasing this rate</p></td>
+</tr>
+
+  
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>payment_methood</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>The ID of the payment method you wish to use. We'll use the default card you have on file otherwise.</p></td>
+</tr>
+
+  
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="dispatch.js.html" class="button">View Source</a>
+            <span>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line149">line 149</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>Returns the response object. The data property <a href="global.html#Delivery"><code>Responses's data property</code></a> will be the <a href="global.html#Delivery"><code>Delivery</code></a> object.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">Promise.&lt;<a href="global.html#Response">Response</a>></span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>//assuming we already created the delviery, we have access to the rates array, if any were returned
+//we can pass back the id of the rate that we want to purchase the delivery
+
+const delivery = response.data
+const rate = delivery.rates[0].id //selected the first rate
+const response = await dispatch.deliveries.buy(delivery.id, rate.id)
+
+//if the purchase was successful, the purchased rate will be avaible on the purchased_rate property
+const purchasedRate = response.data.purchased_rate</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".create">
+        <a class="href-link" href="#.create">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                create<span class="signature">(sender, recipient, parcels, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Response">Response</a>>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Create a delivery intent. This will give you a list of rates to choose from.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+            <th>Attributes</th>
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>sender</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Object</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>the details about there this package is coming from</p></td>
+</tr>
+
+  
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>name</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>The name of the sender. This could be a company name or a person's name</p></td>
+</tr>
+
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>email</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>The email of the sender. For on demand deliveries, this email will be used by the courier to contact the sender in case of any issues</p></td>
+</tr>
+
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>phone</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>The phone number of this sender that an on demand courier could use to contact this sender if there is an issue</p></td>
+</tr>
+
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>address_id</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>If you have an address registered with dispatch, you can just send over the address_id instead of the full address</p></td>
+</tr>
+
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>address</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Object.&lt;<a href="global.html#NewAddress">NewAddress</a>></span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>If you do not have an address_id, you can just send your address and we'll create one for you. Your address can just be a full string and we'll parse it on our end, or you can send it as an object</p></td>
+</tr>
+
+  
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>recipient</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Object</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>the details about there this package is coming from</p></td>
+</tr>
+
+  
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>name</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>The name of the sender. This could be a company name or a person's name</p></td>
+</tr>
+
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>email</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>The email of the sender. For on demand deliveries, this email will be used by the courier to contact the sender in case of any issues</p></td>
+</tr>
+
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>phone</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>The phone number of this recipient that an on demand courier could use to contact this receipient if there is an issue</p></td>
+</tr>
+
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>address</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Object.&lt;<a href="global.html#NewAddress">NewAddress</a>></span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>Your address can just be a full string and we'll parse it on our end, or you can send it as an object</p></td>
+</tr>
+
+  
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>parcels</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Array.&lt;<a href="global.html#Parcel">Parcel</a>></span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>An array of parcels that you want to send</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>options</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Object</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>Additional options to include in your delivery.</p></td>
+</tr>
+
+  
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>rate_cards</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Array</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>An array of rate cards that you want to use for this transaction. These will be used instead of the rate cards you set on your Dispatch Dashboard</p></td>
+</tr>
+
+  
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="dispatch.js.html" class="button">View Source</a>
+            <span>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line84">line 84</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>Returns the response object. The data property <a href="global.html#Delivery"><code>Responses's data property</code></a> will be the <a href="global.html#Delivery"><code>Delivery</code></a> object.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">Promise.&lt;<a href="global.html#Response">Response</a>></span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>const sender = {
+   name: "Dispatch Roasters"
+   email: roasters@getdispatch.app,
+   address_id: "addr_j83498fhweofh4937fh"
+}
+
+const recipient = {
+   name: "Jamie Jones"
+   email: jamie.jones@getdispatch.app,
+   address: {
+       address_line1: "500 7th Ave",
+       city: "New York",
+       state: "NY"
+       zipcode: "10018"
+   }
+}
+
+const parcel = {
+   length: 10 // inches
+   width: 10 // inches
+   height: 10 // inches
+   weight: 10 // pounds
+}
+
+const response = await dispatch.deliveries.create(sender, recipient, [parcel])
+const delivery = response.data</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+
+    
     <h4 class="name" id=".list">
         <a class="href-link" href="#.list">#</a>
         
@@ -177,7 +1138,7 @@
         
         <span class="code-name">
             
-                list<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;Object>}</span>
+                list<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Response">Response</a>>}</span>
             
         </span>
     </h4>
@@ -237,7 +1198,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line53">line 53</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line59">line 59</a>
             </span>
         </p>
     
@@ -268,13 +1229,13 @@
 
 <div class="columns">
     
-    <div class='param-desc column is-7'><p>returns the standard Dispatch response object.</p></div>
+    <div class='param-desc column is-7'><p>Returns the response object. The data property <a href="global.html#Delivery"><code>Responses's data property</code></a> will be an array of <a href="global.html#Delivery"><code>Delivery</code></a> objects.</p></div>
     
     
     <div class='column is-5 has-text-left'>
         <label>Type: </label>
         
-<span class="param-type">Promise.&lt;Object></span>
+<span class="param-type">Promise.&lt;<a href="global.html#Response">Response</a>></span>
 
 
     </div>
@@ -286,6 +1247,201 @@
     </div>
 
 
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>const response = await dispatch.deliveries.list()
+const deliveries = response.data</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".refund">
+        <a class="href-link" href="#.refund">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                refund<span class="signature">(delivery_id)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Response">Response</a>>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Refund a shipping label that you have already purchased</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>delivery_id</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The ID of the delivery that you want to refund.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="dispatch.js.html" class="button">View Source</a>
+            <span>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line187">line 187</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>Returns the response object.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">Promise.&lt;<a href="global.html#Response">Response</a>></span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>//a refund can only be done on a purchased label that has not been used
+//refunds for on demand couriers need to happen within 5 minutes
+
+const response = dispatch.deliveries.refund("del_28374n8iudshf3nqifub")</code></pre>
+    
 
 
 </div>
@@ -303,7 +1459,7 @@
         
         <span class="code-name">
             
-                retrieve<span class="signature">(id)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Delivery">Delivery</a>>}</span>
+                retrieve<span class="signature">(id)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Response">Response</a>>}</span>
             
         </span>
     </h4>
@@ -312,7 +1468,7 @@
     
     
     <div class="description">
-        <p>Test child object with child namespace</p>
+        <p>Retrieves a delivery using it's ID</p>
     </div>
     
 
@@ -414,7 +1570,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line27">line 27</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line33">line 33</a>
             </span>
         </p>
     
@@ -445,13 +1601,13 @@
 
 <div class="columns">
     
-    <div class='param-desc column is-7'><p>returns the delivery object. <a href="global.html#Delivery"><code>Delivery</code></a></p></div>
+    <div class='param-desc column is-7'><p>Returns the response object. The data property <a href="global.html#Delivery"><code>Responses's data property</code></a> will be the <a href="global.html#Delivery"><code>Delivery</code></a> object.</p></div>
     
     
     <div class='column is-5 has-text-left'>
         <label>Type: </label>
         
-<span class="param-type">Promise.&lt;<a href="global.html#Delivery">Delivery</a>></span>
+<span class="param-type">Promise.&lt;<a href="global.html#Response">Response</a>></span>
 
 
     </div>
@@ -468,8 +1624,8 @@
     <h5>Example</h5>
     
     
-        <pre class="prettyprint"><code>const response = await dispatch.deliveries.list()
-const deliveries = response.data</code></pre>
+        <pre class="prettyprint"><code>const response = await dispatch.deliveries.retrieve("del_fjdsklfju8jisjfdisoiu89j")
+const delivery = response.data</code></pre>
     
 
 

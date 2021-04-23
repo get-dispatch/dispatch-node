@@ -337,7 +337,7 @@
     <td class="type">
     
         
-<span class="param-type">Object.&lt;Courier></span>
+<span class="param-type">Object</span>
 
 
     
@@ -347,7 +347,7 @@
 
     
 
-    <td class="description last"><p>The courier object if the delivery is on demand</p></td>
+    <td class="description last"><p>The courier object if the delivery is on demand. This will be depricated in the future as the same data is found in the Provider object that is attached to the Rate.</p></td>
 </tr>
 
         
@@ -370,7 +370,7 @@
 
     
 
-    <td class="description last"><p>The time in miliseconds from Epoch in miliseconds of the creation date</p></td>
+    <td class="description last"><p>epoch time in seconds</p></td>
 </tr>
 
         
@@ -615,7 +615,7 @@
     <td class="type">
     
         
-<span class="param-type">Array.&lt;Parcel></span>
+<span class="param-type">Array.&lt;<a href="global.html#Parcel">Parcel</a>></span>
 
 
     
@@ -661,7 +661,7 @@
     <td class="type">
     
         
-<span class="param-type">Object.&lt;Rate></span>
+<span class="param-type">Object.&lt;<a href="global.html#Rate">Rate</a>></span>
 
 
     
@@ -707,7 +707,7 @@
     <td class="type">
     
         
-<span class="param-type">Array.&lt;Rate></span>
+<span class="param-type">Array.&lt;<a href="global.html#Rate">Rate</a>></span>
 
 
     
@@ -730,7 +730,7 @@
     <td class="type">
     
         
-<span class="param-type">Object.&lt;Recipient></span>
+<span class="param-type">Object.&lt;<a href="global.html#Entity">Entity</a>></span>
 
 
     
@@ -776,7 +776,7 @@
     <td class="type">
     
         
-<span class="param-type">Object.&lt;Sender></span>
+<span class="param-type">Object.&lt;<a href="global.html#Entity">Entity</a>></span>
 
 
     
@@ -809,7 +809,7 @@
 
     
 
-    <td class="description last"><p>The time in miliseconds from Epoch in miliseconds of the shipment date.</p></td>
+    <td class="description last"><p>The time in seconds from Epoch in seconds of the shipment date.</p></td>
 </tr>
 
         
@@ -1039,7 +1039,7 @@
 
     
 
-    <td class="description last"><p>The time in miliseconds from Epoch in miliseconds when this delivery last had an update</p></td>
+    <td class="description last"><p>epoch time in seconds</p></td>
 </tr>
 
         
@@ -1177,14 +1177,7 @@
 
     
 
-    <td class="description last"><p>an array of urls to notify when there is a tracking update to a delivery.
-/</p>
-<p>// /**
-//  * The Courier object
-//  * @typedef {Object} Courier
-//  * @property {string} id - The courier ID
-//  * @property {integer} amount - The amount that was payed for the delivery as an integer.
-//</p></td>
+    <td class="description last"><p>an array of urls to notify when there is a tracking update to a delivery.</p></td>
 </tr>
 
   
@@ -1240,7 +1233,2684 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line66">line 66</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line225">line 225</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">Object</span>
+
+
+    </span>
+
+<h4 class="name" id="Entity">
+    <a class="href-link" href="#Entity">#</a>
+    
+    <span class="code-name">
+        Entity
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The Entity object, whcih descripes a company or person</p>
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>id</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The entity ID</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>address</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Object</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The address details of this entity</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>address_line1</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>address_line2</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>city</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>formatted_address</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>the combined address string including city, state, and zipcode</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>place_name</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>in most cases this is the same as the city. For U.S. shipment, just ignore this</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>state</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>the full string of the the state such as &quot;California or New York&quot;</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>state_abbreviation</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>the abbreviation of the the state such as &quot;CA or &quot;NY&quot;</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>state_name</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>@deprecated this is now just called state</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>street_name</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>the name of the street from address_line1</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>street_number</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>the number of the street from address_line1.</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>street_suffix</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>will we the last part of the street name like &quot;St&quot; or &quot;Ln&quot;</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>textarea</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>if you will pre-fill an html textarea with the string, this includes the return values for the address to format into multiple lines</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>timezone</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>the tz format for this addresses timezone. <a href="https://en.wikipedia.org/wiki/Tz_database">https://en.wikipedia.org/wiki/Tz_database</a></p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>verified</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>if this address was verified with USPS</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>zipcode</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>the address zipcode. This is the same value as postal_code</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>zipcode</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>the address zipcode. This is the same value as postal_code</p></td>
+</tr>
+
+  
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>email</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>the email address to contact this entity</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>name</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>the name of this entity</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>phone</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+|
+
+<span class="param-type">null</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>the phone number to contact this entity</p></td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="dispatch.js.html" class="button">View Source</a>
+            <span>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line274">line 274</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">Object</span>
+
+
+    </span>
+
+<h4 class="name" id="Item">
+    <a class="href-link" href="#Item">#</a>
+    
+    <span class="code-name">
+        Item
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The Item Object. This is optional but allows you to specify what the items are that are packaged in your box. In the future, this will be used to help facilitate one-click returns.</p>
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+            <th>Attributes</th>
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>name</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>The name of this item</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>sku</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>The item sku</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>price</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>The item's price as an integer</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>value</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>The item's declared values as an integer</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>product_id</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>The id used to identify this product on your inventory system</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>varient_id</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>If this is a specific varient of a product id</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>length</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>The length of the item in inches. Can use this for cheaper return labels if we know the box can be smaller.</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>width</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>The width of the item in inches. Can use this for cheaper return labels if we know the box can be smaller.</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>height</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>The height of the item in inches. Can use this for cheaper return labels if we know the box can be smaller.</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>weight</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>The weight of the item in pounds. Can use this for cheaper return labels if we know the box can be lighter.</p></td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="dispatch.js.html" class="button">View Source</a>
+            <span>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line377">line 377</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">Object</span>
+
+
+    </span>
+
+<h4 class="name" id="NewAddress">
+    <a class="href-link" href="#NewAddress">#</a>
+    
+    <span class="code-name">
+        NewAddress
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The New Address Object. When creating a new address, you can either send the address a a string value or an object. If you're choosing an object, below are the properties you need to provide.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="dispatch.js.html" class="button">View Source</a>
+            <span>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line357">line 357</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">Object</span>
+
+
+    </span>
+
+<h4 class="name" id="Parcel">
+    <a class="href-link" href="#Parcel">#</a>
+    
+    <span class="code-name">
+        Parcel
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The Parcel Object. When you create a parcel or retreive a delivery, you'll always be referencing an array of parcels</p>
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+            <th>Attributes</th>
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>length</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>The length of the parcel in inches</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>width</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>The width of the parcel in inches</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>height</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>The height of the parcel in inches</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>weight</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>The weight of the parcel in pounds</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>items</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;<a href="global.html#Item">Item</a>></span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>you can optionally include items that are in the packages box. This can be used for on click returns in the future</p></td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="dispatch.js.html" class="button">View Source</a>
+            <span>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line367">line 367</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">Object</span>
+
+
+    </span>
+
+<h4 class="name" id="Rate">
+    <a class="href-link" href="#Rate">#</a>
+    
+    <span class="code-name">
+        Rate
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The Rate object</p>
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>amount</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The price of this rate as an integer</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>carrier_account</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+|
+
+<span class="param-type">null</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The carrier account / custom rate card that was used to price this rate</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>created_at</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>epoch time in seconds</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>currency</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>the currency of this rate card as lowercase ISO 4217 format <a href="https://en.wikipedia.org/wiki/ISO_4217">https://en.wikipedia.org/wiki/ISO_4217</a></p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>dispatch</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>if this rate was originated by dispatch APIs</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>duration</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Object</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>descripes how long the delivery will take</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>arrives_by</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>the human readable string for the delivery date and time. For example: &quot;Today by 9pm&quot;</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>days</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>the amount of days that this delivery is estimated to take</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>pickup_at</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+|
+
+<span class="param-type">null</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>epoch time in seconds when this order will be picked up</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>terms</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+|
+
+<span class="param-type">null</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>this will be depricated in the future. Just use arrives_at</p></td>
+</tr>
+
+  
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>grace_period</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Object</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The grace period that an on_demand courier will wait for and the fees for going over it.</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>fee</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The grace period fee as an integer.</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>minutes</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The amount of minutes that the grace period is good for.</p></td>
+</tr>
+
+  
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>id</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>the id of this rate. This id will be passed to dispatch to purchase the rate</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>invoice</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Object</span>
+|
+
+<span class="param-type">null</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>If the rate is generated by an on demand courier from dispatch, this will be a breakdown of the total cost.  Otherwise will be null</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>additional_items_fee</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The cost for additional items if the order contained multiple packages and the courier chaneges this fee</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>dropoff_fee</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The fixed dropoff fee that this courier charges</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>dropoff_rate</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The rate this courier charges for the distance from pickup location to dropoff location</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>local_fee</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>If there are any local fees that are charged in the pickup or dropoff city</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>pickup_fee</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The fixed pickuo fee that this courier charges</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>pickup_rate</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The rate this courier charges for the distance from to get to the pickup location</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>rate_card</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+|
+
+<span class="param-type">null</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The id of the rate card that was used for this invoice</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>subtital</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The total before taxes</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>tax</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The tax charged for this delivery</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>toll</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>Any tolls that were charged for this delivery</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>total</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The final total for this invoice. This number is the same as the &quot;amount&quot;</p></td>
+</tr>
+
+  
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>lead_time_hours</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The amount of hours that are needed in advance before the courier can get the the pickup destination</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>on_demand</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>If this rate is an on demand courier</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>pickup_at</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>@depricated epoch time in seconds when this order will be picked up. Same as duration.pickup_at</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>provider</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Object</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The provider is the courier or carrier that will be conducting the delivery</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>id</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The ID of this provider</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>logo_url</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The logo that of this provider</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>name</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The name of this provider</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>support_email</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The email that can be used to contact this provider</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>support_phone</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+|
+
+<span class="param-type">null</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The support phone number that can be used to contact this provider</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>support_url</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+|
+
+<span class="param-type">null</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The url that this provider has for support.</p></td>
+</tr>
+
+  
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>test</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>If this was a test delivery or not</p></td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="dispatch.js.html" class="button">View Source</a>
+            <span>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line300">line 300</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">Object</span>
+
+
+    </span>
+
+<h4 class="name" id="Response">
+    <a class="href-link" href="#Response">#</a>
+    
+    <span class="code-name">
+        Response
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The Response Object. Every dispatch response will always have the same object that is returned</p>
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>message</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The message that could be displayed to an end user if the response is successful or ends in an error</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>data</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Object</span>
+|
+
+<span class="param-type">Array</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The data that was requested if any. If requesting lots of data like deliveries, the data will be formatted an an Array. If you're just pulling one item by an ID like a specific delivery, the response will be an Object.</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>status</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The html status code for the response</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>errors</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>If there were errors, the array will be filled with the property names that caused the error.</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>error_code</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+|
+
+<span class="param-type">null</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The server error code</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>pagination</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Object</span>
+|
+
+<span class="param-type">null</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>when pulling multiple object like many deliveries, the pagination will let you know if there are more items that can be pulled from the database.</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>limit</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>the limit that was applied to the pagination. The default is 15 and the max is 100</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>current_page</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The current page this pagination is on. If the limit is 15 and the current_page is 3, you know you're looking at items 30 - 45</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>has_more</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>Lets you know when you can paginate further</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>count</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The amount of items that were returned.</p></td>
+</tr>
+
+  
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="dispatch.js.html" class="button">View Source</a>
+            <span>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line342">line 342</a>
             </span>
         </p>
     
