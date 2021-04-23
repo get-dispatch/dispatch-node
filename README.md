@@ -29,7 +29,7 @@ Or using ES modules and `async`/`await`:
 
 ```js
 import Dispatch from "dispatch-node";
-const dispatch = new Stripe("YOUR_API_KEY");
+const dispatch = new Dispatch("YOUR_API_KEY");
 
 (async () => {
   const response = await dispatch.deliveries.list();
