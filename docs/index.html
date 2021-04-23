@@ -119,7 +119,7 @@ dispatch.deliveries
 </code></pre>
 <p>Or using ES modules and <code>async</code>/<code>await</code>:</p>
 <pre class="prettyprint source lang-js"><code>import Dispatch from &quot;dispatch-node&quot;;
-const dispatch = new Stripe(&quot;YOUR_API_KEY&quot;);
+const dispatch = new Dispatch(&quot;YOUR_API_KEY&quot;);
 
 (async () => {
   const response = await dispatch.deliveries.list();
