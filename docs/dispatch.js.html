@@ -178,7 +178,7 @@ module.exports = class Dispatch {
        * @param {string} sender.name - The name of the sender. This could be a company name or a person's name
        * @param {string} sender.email - The email of the sender. For on demand deliveries, this email will be used by the courier to contact the sender in case of any issues
        * @param {string} [sender.phone] - The phone number of this sender that an on demand courier could use to contact this sender if there is an issue
-       * @param {string} [sender.address_id] - If you have an address registered with dispatch, you can just send over the address_id instead of the full address
+       * @param {string} [sender.location_id] - If you already have a location object, you can simply pass the id of the location and we'll use it's address.
        * @param {(string|Object&lt;NewAddress>)} [sender.address] - If you do not have an address_id, you can just send your address and we'll create one for you. Your address can just be a full string and we'll parse it on our end, or you can send it as an object
        * @param {Object} recipient - the details about there this package is coming from
        * @param {string} recipient.name - The name of the sender. This could be a company name or a person's name
@@ -194,7 +194,7 @@ module.exports = class Dispatch {
        * const sender = {
        *    name: "Dispatch Roasters"
        *    email: roasters@getdispatch.app,
-       *    address_id: "addr_j83498fhweofh4937fh"
+       *    loction_id: "loc_j83498fhweofh4937fh"
        * }
        *
        * const recipient = {

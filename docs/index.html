@@ -110,7 +110,7 @@
 <p>The package needs to be configured with your account's API Key, which is
 available in the <a href="https://app.getdispatch.app/settings/api">Dispatch Dashboard</a>.</p>
 <pre class="prettyprint source lang-js"><code>const Dispatch = require(&quot;dispatch-node&quot;);
-const dispatch = new Dispatch(&quot;YOUR_API_KEY&quot;);
+const dispatch = new Dispatch(&quot;key_EHKD5tbatzX59DArnTBjhr46G5n1f4aJkvwPByft&quot;);
 
 dispatch.deliveries
   .list()
@@ -119,7 +119,7 @@ dispatch.deliveries
 </code></pre>
 <p>Or using ES modules and <code>async</code>/<code>await</code>:</p>
 <pre class="prettyprint source lang-js"><code>import Dispatch from &quot;dispatch-node&quot;;
-const dispatch = new Dispatch(&quot;YOUR_API_KEY&quot;);
+const dispatch = new Dispatch(&quot;key_EHKD5tbatzX59DArnTBjhr46G5n1f4aJkvwPByft&quot;);
 
 (async () => {
   const response = await dispatch.deliveries.list();
@@ -133,13 +133,13 @@ const dispatch = new Dispatch(&quot;YOUR_API_KEY&quot;);
 
 const sender = {
    name: &quot;Dispatch Roasters&quot;
-   email: roasters@getdispatch.app,
-   address_id: &quot;addr_j83498fhweofh4937fh&quot;
+   email: &quot;roasters@getdispatch.app&quot;,
+   location_id: &quot;loc_1uzCQL4cTjjw3vRfE2qYk1&quot;
 }
 
 const recipient = {
    name: &quot;Jamie Jones&quot;
-   email: jamie.jones@getdispatch.app,
+   email: &quot;jamie.jones@getdispatch.app&quot;,
    address: {
        address_line1: &quot;500 7th Ave&quot;,
        city: &quot;New York&quot;,
@@ -152,7 +152,7 @@ const parcel = {
    length: 10 // inches
    width: 10 // inches
    height: 10 // inches
-   weight: 10 // pounds
+   weight: 5.5 // pounds
 }
 
 dispatch.deliveries

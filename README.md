@@ -17,7 +17,7 @@ available in the [Dispatch Dashboard](https://app.getdispatch.app/settings/api).
 
 ```js
 const Dispatch = require("dispatch-node");
-const dispatch = new Dispatch("YOUR_API_KEY");
+const dispatch = new Dispatch("key_EHKD5tbatzX59DArnTBjhr46G5n1f4aJkvwPByft");
 
 dispatch.deliveries
   .list()
@@ -29,7 +29,7 @@ Or using ES modules and `async`/`await`:
 
 ```js
 import Dispatch from "dispatch-node";
-const dispatch = new Dispatch("YOUR_API_KEY");
+const dispatch = new Dispatch("key_EHKD5tbatzX59DArnTBjhr46G5n1f4aJkvwPByft");
 
 (async () => {
   const response = await dispatch.deliveries.list();
@@ -47,13 +47,13 @@ Every method returns a chainable promise which can be used instead of a regular 
 
 const sender = {
    name: "Dispatch Roasters"
-   email: roasters@getdispatch.app,
-   address_id: "addr_j83498fhweofh4937fh"
+   email: "roasters@getdispatch.app",
+   location_id: "loc_1uzCQL4cTjjw3vRfE2qYk1"
 }
 
 const recipient = {
    name: "Jamie Jones"
-   email: jamie.jones@getdispatch.app,
+   email: "jamie.jones@getdispatch.app",
    address: {
        address_line1: "500 7th Ave",
        city: "New York",
@@ -66,7 +66,7 @@ const parcel = {
    length: 10 // inches
    width: 10 // inches
    height: 10 // inches
-   weight: 10 // pounds
+   weight: 5.5 // pounds
 }
 
 dispatch.deliveries

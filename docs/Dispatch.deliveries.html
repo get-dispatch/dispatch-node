@@ -659,7 +659,7 @@ const purchasedRate = response.data.purchased_rate</code></pre>
     
 <tr class="deep-level-1">
   
-      <td class="name"><code>address_id</code></td>
+      <td class="name"><code>location_id</code></td>
   
 
   <td class="type">
@@ -685,7 +685,7 @@ const purchasedRate = response.data.purchased_rate</code></pre>
 
   
 
-  <td class="description last"><p>If you have an address registered with dispatch, you can just send over the address_id instead of the full address</p></td>
+  <td class="description last"><p>If you already have a location object, you can simply pass the id of the location and we'll use it's address.</p></td>
 </tr>
 
   
@@ -1097,7 +1097,7 @@ const purchasedRate = response.data.purchased_rate</code></pre>
         <pre class="prettyprint"><code>const sender = {
    name: "Dispatch Roasters"
    email: roasters@getdispatch.app,
-   address_id: "addr_j83498fhweofh4937fh"
+   loction_id: "loc_j83498fhweofh4937fh"
 }
 
 const recipient = {
