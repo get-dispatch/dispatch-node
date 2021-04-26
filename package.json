@@ -1,6 +1,6 @@
 {
   "name": "dispatch-node",
-  "version": "0.0.4",
+  "version": "0.0.9",
   "description": "The node wrapper for the dispatch API.",
   "main": "lib/dispatch.js",
   "scripts": {
@@ -25,7 +25,8 @@
   ],
   "devDependencies": {
     "better-docs": "^2.3.2",
-    "jsdoc": "^3.6.6"
+    "jsdoc": "^3.6.6",
+    "jsdoc-http-plugin": "^0.3.2"
   },
   "dependencies": {
     "axios": "^0.21.1"
