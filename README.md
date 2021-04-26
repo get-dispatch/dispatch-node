@@ -1,6 +1,6 @@
 # Dispatch Sender Node.js Library
 
-The Dispatch Sender Node library provides convenient access to the Dispatch Sender API from applications written in server-side JavaScript.
+The Dispatch Sender Node library provides convenient access to the Dispatch Sender API from applications written in server-side JavaScript. Detailed documentation can be found [here](https://get-dispatch.github.io/dispatch-node/).
 
 ## Installation
 
