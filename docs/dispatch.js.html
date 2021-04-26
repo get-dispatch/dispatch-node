@@ -307,7 +307,7 @@ module.exports = class Dispatch {
       refund: function (delivery_id) {
         return new Promise((resolve, reject) => {
           const _config = _createNetworkConfig(apikey, env);
-          _refundDelivery(delivery_id, rate_id, options, _config)
+          _refundDelivery(delivery_id, _config)
             .then((data) => {
               resolve(data);
             })
