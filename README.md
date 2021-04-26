@@ -25,19 +25,6 @@ dispatch.deliveries
   .catch((error) => console.error(error));
 ```
 
-Or using ES modules and `async`/`await`:
-
-```js
-import Dispatch from "dispatch-node";
-const dispatch = new Dispatch("key_EHKD5tbatzX59DArnTBjhr46G5n1f4aJkvwPByft");
-
-(async () => {
-  const response = await dispatch.deliveries.list();
-
-  console.log(response.data);
-})();
-```
-
 ### Using Promises
 
 Every method returns a chainable promise which can be used instead of a regular callback:
