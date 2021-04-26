@@ -33,18 +33,18 @@ Every method returns a chainable promise which can be used instead of a regular 
 // Create a new delivery and then select the cheapest rate to purchase
 
 const sender = {
-   name: "Dispatch Roasters"
+   name: "Dispatch Roasters",
    email: "roasters@getdispatch.app",
    location_id: "loc_1uzCQL4cTjjw3vRfE2qYk1"
 }
 
 const recipient = {
-   name: "Jamie Jones"
+   name: "Jamie Jones",
    email: "jamie.jones@getdispatch.app",
    address: {
        address_line1: "500 7th Ave",
        city: "New York",
-       state: "NY"
+       state: "NY",
        zipcode: "10018"
     }
 }
