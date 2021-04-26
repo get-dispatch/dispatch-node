@@ -134,7 +134,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line27">line 27</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line30">line 30</a>
             </span>
         </p>
     
@@ -402,7 +402,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line149">line 149</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line165">line 165</a>
             </span>
         </p>
     
@@ -721,7 +721,7 @@ const purchasedRate = response.data.purchased_rate</code></pre>
 
   
 
-  <td class="description last"><p>If you do not have an address_id, you can just send your address and we'll create one for you. Your address can just be a full string and we'll parse it on our end, or you can send it as an object</p></td>
+  <td class="description last"><p>If you do not have a location_id, you can just send your address and we'll create a location object for you. Your address can just be a full string and we'll parse it on our end, or you can send it as an object</p></td>
 </tr>
 
   
@@ -852,7 +852,7 @@ const purchasedRate = response.data.purchased_rate</code></pre>
 
   
 
-  <td class="description last"><p>The phone number of this recipient that an on demand courier could use to contact this receipient if there is an issue</p></td>
+  <td class="description last"><p>The phone number of this recipient that an on demand courier could use to contact this recipient if there is an issue</p></td>
 </tr>
 
   
@@ -1040,7 +1040,7 @@ const purchasedRate = response.data.purchased_rate</code></pre>
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line84">line 84</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line100">line 100</a>
             </span>
         </p>
     
@@ -1119,7 +1119,7 @@ const parcel = {
 }
 
 const response = await dispatch.deliveries.create(sender, recipient, [parcel])
-const delivery = response.data</code></pre>
+const delivery = response.data //this will have the delivery object</code></pre>
     
 
 
@@ -1138,7 +1138,7 @@ const delivery = response.data</code></pre>
         
         <span class="code-name">
             
-                list<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Response">Response</a>>}</span>
+                list<span class="signature">(options)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Response">Response</a>>}</span>
             
         </span>
     </h4>
@@ -1158,6 +1158,106 @@ const delivery = response.data</code></pre>
 
 
 
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>options</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Object</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The options that you can use to return results</p></td>
+</tr>
+
+  
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>limit</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">integer</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The amount of deliveries you want returned. The default is 15, but ranges from 1 to 100</p></td>
+</tr>
+
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>page</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">integer</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The page you want to deliveries to start at. For example, a limit of 15 with a page value of 3, would return deliveries 30 - 45. The response object for the .list() method will have a pagination property which you can use to determine if there are more values in the database.</p></td>
+</tr>
+
+  
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -1198,7 +1298,7 @@ const delivery = response.data</code></pre>
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line59">line 59</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line62">line 62</a>
             </span>
         </p>
     
@@ -1253,7 +1353,16 @@ const delivery = response.data</code></pre>
     
     
         <pre class="prettyprint"><code>const response = await dispatch.deliveries.list()
-const deliveries = response.data</code></pre>
+const deliveries = response.data //this will have an array of delivery objects
+
+//check if there are more values in the database
+if (data.pagination.has_more) {
+   //the delivery object have a lot of data and seting the pagination to a loop can really hurt performance
+   //It's advised to just query in batches
+   //To query for the next page (batch) of deliveries you could do something like:
+
+   const nextResponse = dispatch.deliveries.list({limit: response.pagination.limit, page: response.pagination.current_page + 1})
+}</code></pre>
     
 
 
@@ -1383,7 +1492,7 @@ const deliveries = response.data</code></pre>
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line187">line 187</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line203">line 203</a>
             </span>
         </p>
     
@@ -1522,7 +1631,7 @@ const response = dispatch.deliveries.refund("del_28374n8iudshf3nqifub")</code></
 
   
 
-  <td class="description last"><p>The is of the delivery that you want to retrieve</p></td>
+  <td class="description last"><p>The ID of the delivery that you want to retrieve</p></td>
 </tr>
 
 
@@ -1570,7 +1679,7 @@ const response = dispatch.deliveries.refund("del_28374n8iudshf3nqifub")</code></
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line33">line 33</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line36">line 36</a>
             </span>
         </p>
     
@@ -1625,7 +1734,7 @@ const response = dispatch.deliveries.refund("del_28374n8iudshf3nqifub")</code></
     
     
         <pre class="prettyprint"><code>const response = await dispatch.deliveries.retrieve("del_fjdsklfju8jisjfdisoiu89j")
-const delivery = response.data</code></pre>
+const delivery = response.data //this will contain the delivery object</code></pre>
     
 
 

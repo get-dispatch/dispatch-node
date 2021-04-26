@@ -160,8 +160,11 @@ dispatch.deliveries
   .then(response => {
       const delivery = response.data
 
-      //filter for the cheapest rate
-      const rate = delivery.rates.reduce((a, b) => Math.min(a, b));
+      //your logic to select the rate you want.
+      //You could have a custom select it or you can filter by price or service level
+      //in this example, we're selecting the first rate
+
+      const rate = delivery.rates[0]
       return dispatch.deliveries.buy(delivery.id, rate.id)
   }).then(response => {
       //new delivery was created

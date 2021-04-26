@@ -5,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Dispatch</title>
+  <title> locations</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -66,15 +66,15 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Namespaces</h3><ul><li><a href="Dispatch.deliveries.html">deliveries</a></li></ul><h3>Classes</h3><ul><li><a href="Dispatch.html">Dispatch</a></li></ul><h3><a href="global.html">Global</a></h3></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Namespaces</h3><ul><li><a href="Dispatch.deliveries.html">deliveries</a></li><li><a href="Dispatch.locations.html">locations</a></li></ul><h3>Classes</h3><ul><li><a href="Dispatch.html">Dispatch</a></li></ul><h3><a href="global.html">Global</a></h3></div>
                 
             </nav>
         </div>
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p>Class</p>
-                    <h1>Dispatch</h1>
+                    <p>Namespace</p>
+                    <h1>locations</h1>
                 </header>
                 
 
@@ -85,9 +85,8 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>Dispatch<span class="signature">(token, env<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h2>
-        
-            <div class="class-description"><p>This is the main class that will be the entry point into dispatch. You can initalize this class with your API Key.</p></div>
+        <h2>
+            <span class="ancestors"><a href="Dispatch.html">Dispatch</a>.</span>locations</h2>
         
     
 </header>
@@ -96,22 +95,89 @@
     <div class="container-overview">
     
         
-            <div class='vertical-section'>
-                <div class="members">
-                    <div class="member">
-                        <div class=name>
-                            <span class="tag">Constructor</span>
-                        </div>
-                        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="dispatch.js.html" class="button">View Source</a>
+            <span>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line222">line 222</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
+            
+                <div class="member">
 
 
     
-    <h4 class="name" id="Dispatch">
-        <a class="href-link" href="#Dispatch">#</a>
+    <h4 class="name" id=".retrieve">
+        <a class="href-link" href="#.retrieve">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
         
         <span class="code-name">
             
-                new Dispatch<span class="signature">(token, env<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
+                retrieve<span class="signature">(id)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Response">Response</a>>}</span>
             
         </span>
     </h4>
@@ -120,7 +186,7 @@
     
     
     <div class="description">
-        <p>Creates a new Dispatch class. Once this class is initalized, you can use any of the namespaces with a method to use tge API.</p>
+        <p>Retrieves a location using its ID</p>
     </div>
     
 
@@ -145,11 +211,7 @@
             <th>Type</th>
 
             
-            <th>Attributes</th>
-            
 
-            
-            <th>Default</th>
             
 
             <th class="last">Description</th>
@@ -162,7 +224,7 @@
             
 <tr class="deep-level-0">
   
-      <td class="name"><code>token</code></td>
+      <td class="name"><code>id</code></td>
   
 
   <td class="type">
@@ -175,63 +237,10 @@
   </td>
 
   
-      <td class="attributes">
-      
-
-      
-
-      
-      </td>
-  
 
   
-      <td class="default">
-      
-      </td>
-  
 
-  <td class="description last"><p>initalize the class with your API key.</p></td>
-</tr>
-
-
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>env</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">string</span>
-
-
-  
-  </td>
-
-  
-      <td class="attributes">
-      
-          &lt;optional><br>
-      
-
-      
-
-      
-      </td>
-  
-
-  
-      <td class="default">
-      
-          "production"
-      
-      </td>
-  
-
-  <td class="description last"><p>Unless you have development keys, just leave this to the default value.</p></td>
+  <td class="description last"><p>The ID of the location that you want to retrieve</p></td>
 </tr>
 
 
@@ -279,7 +288,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line13">line 13</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line228">line 228</a>
             </span>
         </p>
     
@@ -302,45 +311,46 @@
 
 
 
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>Returns the response object. The data property <code>Responses's data property</code> will be the <code>Location</code> object.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">Promise.&lt;<a href="global.html#Response">Response</a>></span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
 
 
 
     <h5>Example</h5>
     
     
-        <pre class="prettyprint"><code>const dispatch = new Dispatch(&lt;YOUR_API_KEY>)</code></pre>
+        <pre class="prettyprint"><code>const response = await dispatch.locations.retrieve("loc_fjdsklfju8jisjfdisoiu89j")
+const delivery = response.data //this will contain the location object</code></pre>
     
 
 
-
-                    </div>
-                </div>
+</div>
+            
             </div>
-        
-    
-    </div>
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Namespaces</h3>
-
-        <dl>
-            <dt><a href="Dispatch.deliveries.html">deliveries</a></dt>
-            <dd></dd>
-        </dl>
-    
-
-    
-
+        </div>
     
 
     

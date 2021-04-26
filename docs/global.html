@@ -724,7 +724,7 @@
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>receipient</code></td>
+        <td class="name"><code>recipient</code></td>
     
 
     <td class="type">
@@ -816,29 +816,6 @@
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>special_handling</code></td>
-    
-
-    <td class="type">
-    
-        
-<span class="param-type">string</span>
-
-
-    
-    </td>
-
-    
-
-    
-
-    <td class="description last"><p>Any special handling instructions that will be placed on the label. Limited to 10 characters.</p></td>
-</tr>
-
-        
-            
-<tr class="deep-level-0">
-    
         <td class="name"><code>status</code></td>
     
 
@@ -924,7 +901,7 @@
 
     
 
-    <td class="description last"><p>Indicates if dispatch will send update emails for the delivery.</p></td>
+    <td class="description last"><p>Indicates if dispatch will send update emails for the delivery. This value is set on your dashboard <a href="https://app.getdispatch.app/settings/company/branding">https://app.getdispatch.app/settings/company/branding</a></p></td>
 </tr>
 
         
@@ -1233,7 +1210,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line225">line 225</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line274">line 274</a>
             </span>
         </p>
     
@@ -1786,6 +1763,58 @@
 </tr>
 
         
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>logo_url</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+|
+
+<span class="param-type">null</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The source for the logo. The image is a 256 x 256 square png.</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>logo_url_trimmed</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+|
+
+<span class="param-type">null</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>This logo is trimmed by us to remove the white space. Best used in emails. One of the sides is 256px, depending on the logo's shape.</p></td>
+</tr>
+
+        
         </tbody>
     </table>
 </div>
@@ -1827,7 +1856,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line274">line 274</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line322">line 322</a>
             </span>
         </p>
     
@@ -2245,7 +2274,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line377">line 377</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line430">line 430</a>
             </span>
         </p>
     
@@ -2322,7 +2351,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line357">line 357</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line409">line 409</a>
             </span>
         </p>
     
@@ -2508,6 +2537,35 @@
             
 <tr class="deep-level-0">
     
+        <td class="name"><code>special_handling</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>Any special handling instructions that will be placed on the label. Limited to 12 characters. If you add more than 12 characters, we'll just use the first 12 instead of returning an error. The reason for the limit is that this is the most amount of characters that we can fit within the bounds of the current label.</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
         <td class="name"><code>items</code></td>
     
 
@@ -2577,7 +2635,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line367">line 367</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line419">line 419</a>
             </span>
         </p>
     
@@ -2763,7 +2821,7 @@
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>duration</code></td>
+        <td class="name"><code>service_level</code></td>
     
 
     <td class="type">
@@ -2780,6 +2838,52 @@
     
 
     <td class="description last"><p>descripes how long the delivery will take</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>id</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The ID of the service level. Something like &quot;dispatch_same_day&quot;</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>name</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The human readable name of the service level. Something like &quot;Same Day&quot; or &quot;USPS Overnight&quot;.</p></td>
 </tr>
 
   
@@ -2877,7 +2981,7 @@
 
     
 
-    <td class="description last"><p>this will be depricated in the future. Just use arrives_at</p></td>
+    <td class="description last"><p>The terms for the service level</p></td>
 </tr>
 
   
@@ -3326,7 +3430,7 @@
 
     
 
-    <td class="description last"><p>@depricated epoch time in seconds when this order will be picked up. Same as duration.pickup_at</p></td>
+    <td class="description last"><p>@depricated epoch time in seconds when this order will be picked up. Same as service_level.pickup_at</p></td>
 </tr>
 
         
@@ -3563,7 +3667,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line300">line 300</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line350">line 350</a>
             </span>
         </p>
     
@@ -3910,7 +4014,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line342">line 342</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line394">line 394</a>
             </span>
         </p>
     
