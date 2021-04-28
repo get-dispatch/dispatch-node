@@ -1,6 +1,6 @@
 {
   "name": "dispatch-node",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "The node wrapper for the dispatch Sender API.",
   "main": "lib/dispatch.js",
   "scripts": {

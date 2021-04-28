@@ -1,6 +1,6 @@
 # Dispatch Sender Node.js Library
 
-The Dispatch Sender Node library provides convenient access to the Dispatch Sender API from applications written in server-side JavaScript. Detailed documentation can be found [here](https://get-dispatch.github.io/dispatch-node/).
+The Dispatch Sender Node library provides convenient access to the Dispatch Sender API for applications written in server-side JavaScript. Detailed documentation can be found [here](https://get-dispatch.github.io/dispatch-node/).
 
 ## Installation
 
@@ -97,6 +97,8 @@ Each webhook will contain the entire [Delivery](https://get-dispatch.github.io/d
 Dispatch packages have two "statues": the `status` and `substatus`. The `status` describes the general concept of what is happening to the package, and the substatus gives you more detail about the package. For example, the `status` could be `in_transit` but the substatus will give you details about the transit like `out_for_delivery`. Internally at Dispatch, we use the `substatus` field more often. The `status` and `substatus` can be found on the [Delivery](https://get-dispatch.github.io/dispatch-node/global.html#Delivery) object and the [Tracker](https://get-dispatch.github.io/dispatch-node/global.html#Tracker) object.
 
 Below is the list of statuses that we support. Keep in mind that the [Tracker](https://get-dispatch.github.io/dispatch-node/global.html#Tracker) object will always have a human readable message that you can display.
+
+> ==As we are in beta, there is a chance that some of these statuses will change before we hit V1.==
 
 | status        | substatus               | is_issue | description                                        |
 | ------------- | ----------------------- | -------- | -------------------------------------------------- |
