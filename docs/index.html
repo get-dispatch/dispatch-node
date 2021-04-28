@@ -122,46 +122,220 @@ dispatch.deliveries
 <pre class="prettyprint source lang-js"><code>// Create a new delivery and then select the cheapest rate to purchase
 
 const sender = {
-   name: &quot;Dispatch Roasters&quot;,
-   email: &quot;roasters@getdispatch.app&quot;,
-   location_id: &quot;loc_1uzCQL4cTjjw3vRfE2qYk1&quot;
-}
+  name: &quot;Dispatch Roasters&quot;,
+  email: &quot;roasters@getdispatch.app&quot;,
+  location_id: &quot;loc_1uzCQL4cTjjw3vRfE2qYk1&quot;,
+};
 
 const recipient = {
-   name: &quot;Jamie Jones&quot;,
-   email: &quot;jamie.jones@getdispatch.app&quot;,
-   address: {
-       address_line1: &quot;500 7th Ave&quot;,
-       city: &quot;New York&quot;,
-       state: &quot;NY&quot;,
-       zipcode: &quot;10018&quot;
-    }
-}
+  name: &quot;Jamie Jones&quot;,
+  email: &quot;jamie.jones@getdispatch.app&quot;,
+  address: {
+    address_line1: &quot;500 7th Ave&quot;,
+    city: &quot;New York&quot;,
+    state: &quot;NY&quot;,
+    zipcode: &quot;10018&quot;,
+  },
+};
 
 const parcel = {
-   length: 10 // inches
-   width: 10 // inches
-   height: 10 // inches
-   weight: 5.5 // pounds
-}
+  length: 10, // inches
+  width: 10, // inches
+  height: 10, // inches
+  weight: 5.5, // pounds
+};
 
 dispatch.deliveries
-  .create(sender, recipient, [parcel])
-  .then(response => {
-      const delivery = response.data
+  .create(sender, recipient, [parcel]) //parcel is passed in an array since you can pass multiple parcels as part of one delivery
+  .then((response) => {
+    const delivery = response.data;
 
-      //your logic to select the rate you want.
-      //You could have a customer select it or you can filter by price or service level
-      //in this example, we're selecting the first rate
+    //your logic to select the rate you want.
+    //You could have a customer select it or
+    //you can filter by price or service level
 
-      const rate = delivery.rates[0]
-      return dispatch.deliveries.buy(delivery.id, rate.id)
-  }).then(response => {
-      //new delivery was created
-  }).catch(err => {
-      //deal with the error
+    //in this example, we're selecting the first rate
+    const rate = delivery.rates[0];
+    return dispatch.deliveries.buy(delivery.id, rate.id);
   })
-</code></pre></article>
+  .then((response) => {
+    //new delivery was created
+  })
+  .catch((err) => {
+    //deal with the error
+  });
+</code></pre>
+<h2>Webhooks</h2>
+<p>From the <a href="https://app.getdispatch.app/settings/api">Dispatch Dashboard</a> you can configure webhooks. There are several webhook statuses you can choose from. Our webhooks expect a response with a status code of <code>200</code> within 5 seconds. This should be enough time to process the data and respond back to us. If we do not receieve a response back from you within 5 seconds, we'll retry the webhook a second time after waiting for 3 seconds.</p>
+<p>Our webhooks will attempt to <code>POST</code> to your endpoint.</p>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>delivery_created</td>
+<td>This will fire when the delivery intent was created. This is before the purchase was made</td>
+</tr>
+<tr>
+<td>delivery_expired</td>
+<td>This will fire after a delivery intent expires. Delivery intents that are not captured within 15 minutes after automatically expired</td>
+</tr>
+<tr>
+<td>delivery_purchased</td>
+<td>This webhook will fire after a delivery intent is successfully captured</td>
+</tr>
+<tr>
+<td>tracking_updated</td>
+<td>This webhook will fire when there are any tracking updates to the package. The tracking updated webhook does not fire when the inital delivery intent is created or purchased.</td>
+</tr>
+</tbody>
+</table>
+<p>Each webhook will contain the entire <a href="https://get-dispatch.github.io/dispatch-node/global.html#Delivery">Delivery</a> object. Most often, you're probably interested in the <code>tracking_updates</code> property which is an ordered array of <a href="https://get-dispatch.github.io/dispatch-node/global.html#Tracker">Tracker</a> objects or the <code>tracking_status</code> property which is the current <a href="https://get-dispatch.github.io/dispatch-node/global.html#Tracker">Tracker</a> object.</p>
+<h2>Package Statues</h2>
+<p>Dispatch packages have two &quot;statues&quot;: the <code>status</code> and <code>substatus</code>. The <code>status</code> describes the general concept of what is happening to the package, and the substatus gives you more detail about the package. For example, the <code>status</code> could be <code>in_transit</code> but the substatus will give you details about the transit like <code>out_for_delivery</code>. Internally at Dispatch, we use the <code>substatus</code> field more often. The <code>status</code> and <code>substatus</code> can be found on the <a href="https://get-dispatch.github.io/dispatch-node/global.html#Delivery">Delivery</a> object and the <a href="https://get-dispatch.github.io/dispatch-node/global.html#Tracker">Tracker</a> object.</p>
+<p>Below is the list of statuses that we support. Keep in mind that the <a href="https://get-dispatch.github.io/dispatch-node/global.html#Tracker">Tracker</a> object will always have a human readable message that you can display.</p>
+<table>
+<thead>
+<tr>
+<th>status</th>
+<th>substatus</th>
+<th>is_issue</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pre_transit</code></td>
+<td><code>created</code></td>
+<td>false</td>
+<td>Package was created</td>
+</tr>
+<tr>
+<td><code>transit</code></td>
+<td><code>address_issue</code></td>
+<td>true</td>
+<td>Issue with the address</td>
+</tr>
+<tr>
+<td><code>transit</code></td>
+<td><code>courier_at_sender</code></td>
+<td>false</td>
+<td>Courier arrived to pickup up the package</td>
+</tr>
+<tr>
+<td><code>transit</code></td>
+<td><code>contact_courier</code></td>
+<td>true</td>
+<td>Courier needs to be contacted</td>
+</tr>
+<tr>
+<td><code>transit</code></td>
+<td><code>delayed</code></td>
+<td>true</td>
+<td>Package will not get there on time</td>
+</tr>
+<tr>
+<td><code>transit</code></td>
+<td><code>delivery_attempted</code></td>
+<td>true</td>
+<td>Delivery attempted but not compelted</td>
+</tr>
+<tr>
+<td><code>transit</code></td>
+<td><code>delivery_rescheduled</code></td>
+<td>true</td>
+<td>Delivery rescheduled</td>
+</tr>
+<tr>
+<td><code>transit</code></td>
+<td><code>delivery_scheduled</code></td>
+<td>false</td>
+<td>Delivery data scheduled</td>
+</tr>
+<tr>
+<td><code>transit</code></td>
+<td><code>location_inaccessible</code></td>
+<td>true</td>
+<td>Courier could not get to the location</td>
+</tr>
+<tr>
+<td><code>transit</code></td>
+<td><code>out_for_delivery</code></td>
+<td>false</td>
+<td>Package it out for delivery</td>
+</tr>
+<tr>
+<td><code>transit</code></td>
+<td><code>package_accepted</code></td>
+<td>false</td>
+<td>Package was accepted. Taken from sender.</td>
+</tr>
+<tr>
+<td><code>transit</code></td>
+<td><code>package_at_waypoint</code></td>
+<td>false</td>
+<td>Package was accepted by an intermediate location</td>
+</tr>
+<tr>
+<td><code>transit</code></td>
+<td><code>in_transit</code></td>
+<td>false</td>
+<td>Package is in transit</td>
+</tr>
+<tr>
+<td><code>transit</code></td>
+<td><code>pickup_availble</code></td>
+<td>false</td>
+<td>Pickup avaible</td>
+</tr>
+<tr>
+<td><code>transit</code></td>
+<td><code>package_damaged</code></td>
+<td>true</td>
+<td>Package was damaged in transit</td>
+</tr>
+<tr>
+<td><code>delivered</code></td>
+<td><code>delivered</code></td>
+<td>false</td>
+<td>Package was successfully delivered</td>
+</tr>
+<tr>
+<td><code>returned</code></td>
+<td><code>return_to_sender</code></td>
+<td>true</td>
+<td>Package was returned</td>
+</tr>
+<tr>
+<td><code>failed</code></td>
+<td><code>package_undeliverable</code></td>
+<td>true</td>
+<td>Package could not be delivered</td>
+</tr>
+<tr>
+<td><code>failed</code></td>
+<td><code>package_lost</code></td>
+<td>true</td>
+<td>Package was lost</td>
+</tr>
+<tr>
+<td><code>canceled</code></td>
+<td><code>canceled</code></td>
+<td>true</td>
+<td>This delivery was canceled. Usually do to a refund</td>
+</tr>
+<tr>
+<td><code>unknown</code></td>
+<td><code>unknown</code></td>
+<td>true</td>
+<td>Dispatch doesn't know what happened</td>
+</tr>
+</tbody>
+</table></article>
     </section>
 
 
