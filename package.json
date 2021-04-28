@@ -1,7 +1,7 @@
 {
   "name": "dispatch-node",
-  "version": "0.0.18",
-  "description": "The node wrapper for the dispatch API.",
+  "version": "0.0.19",
+  "description": "The node wrapper for the dispatch Sender API.",
   "main": "lib/dispatch.js",
   "scripts": {
     "doc": "jsdoc -c jsdoc.json --readme ./README.md"
@@ -20,8 +20,16 @@
   },
   "homepage": "https://github.com/get-dispatch/dispatch-node#readme",
   "contributors": [
-    "Valentin Panyushenko",
-    "Vlad Pasculescu"
+    {
+      "name": "Valentin Panyushenko",
+      "email": "me@panyushenko.com",
+      "url": "https://github.com/vpanyushenko"
+    },
+    {
+      "name": "Vlad Pasculescu",
+      "email": "vlad@vladpasculescu.com",
+      "url": "https://github.com/vladpasculescu"
+    }
   ],
   "devDependencies": {
     "better-docs": "^2.3.2",
