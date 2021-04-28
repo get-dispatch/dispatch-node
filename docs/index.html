@@ -166,7 +166,7 @@ dispatch.deliveries
   });
 </code></pre>
 <h2>Webhooks</h2>
-<p>From the <a href="https://app.getdispatch.app/settings/api">Dispatch Dashboard</a> you can configure webhooks. There are several webhook statuses you can choose from. Our webhooks expect a response with a status code of <code>200</code> within 5 seconds. This should be enough time to process the data and respond back to us. If we do not receieve a response back from you within 5 seconds, we'll retry the webhook a second time after waiting for 3 seconds.</p>
+<p>From the <a href="https://app.getdispatch.app/settings/api">Dispatch Dashboard</a> you can configure webhooks. There are several webhook statuses you can choose from. Our webhooks expect a response with a status code of <code>200</code> within 5 seconds. This should be enough time to process the data and respond back to us. If we do not receive a response back from you within 5 seconds, we'll retry the webhook a second time after waiting for 3 seconds.</p>
 <p>Our webhooks will attempt to <code>POST</code> to your endpoint.</p>
 <table>
 <thead>
@@ -190,7 +190,7 @@ dispatch.deliveries
 </tr>
 <tr>
 <td>tracking_updated</td>
-<td>This webhook will fire when there are any tracking updates to the package. The tracking updated webhook does not fire when the inital delivery intent is created or purchased.</td>
+<td>This webhook will fire when there are any tracking updates to the package. The tracking updated webhook does not fire when the initial delivery intent is created or purchased.</td>
 </tr>
 </tbody>
 </table>

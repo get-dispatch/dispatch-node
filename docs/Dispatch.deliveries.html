@@ -326,7 +326,7 @@
     
 <tr class="deep-level-1">
   
-      <td class="name"><code>payment_methood</code></td>
+      <td class="name"><code>payment_method</code></td>
   
 
   <td class="type">
@@ -433,7 +433,7 @@
 
 <div class="columns">
     
-    <div class='param-desc column is-7'><p>Returns the response object. The data property <a href="global.html#Delivery"><code>Responses's data property</code></a> will be the <a href="global.html#Delivery"><code>Delivery</code></a> object.</p></div>
+    <div class='param-desc column is-7'><p>Returns the response object. The Response's <a href="global.html#Delivery"><code>data property</code></a> will be an array of <a href="global.html#Delivery"><code>Delivery</code></a> objects.</p></div>
     
     
     <div class='column is-5 has-text-left'>
@@ -456,14 +456,14 @@
     <h5>Example</h5>
     
     
-        <pre class="prettyprint"><code>//assuming we already created the delviery, we have access to the rates array, if any were returned
+        <pre class="prettyprint"><code>//assuming we already created the delivery, we have access to the rates array, if any were returned
 //we can pass back the id of the rate that we want to purchase the delivery
 
 const delivery = response.data
 const rate = delivery.rates[0].id //selected the first rate
 const response = await dispatch.deliveries.buy(delivery.id, rate.id)
 
-//if the purchase was successful, the purchased rate will be avaible on the purchased_rate property
+//if the purchase was successful, the purchased rate will be available on the purchased_rate property
 const purchasedRate = response.data.purchased_rate</code></pre>
     
 
@@ -1071,7 +1071,7 @@ const purchasedRate = response.data.purchased_rate</code></pre>
 
 <div class="columns">
     
-    <div class='param-desc column is-7'><p>Returns the response object. The data property <a href="global.html#Delivery"><code>Responses's data property</code></a> will be the <a href="global.html#Delivery"><code>Delivery</code></a> object.</p></div>
+    <div class='param-desc column is-7'><p>Returns the response object. The Response's <a href="global.html#Delivery"><code>data property</code></a> will be an array of <a href="global.html#Delivery"><code>Delivery</code></a> objects.</p></div>
     
     
     <div class='column is-5 has-text-left'>
@@ -1097,7 +1097,7 @@ const purchasedRate = response.data.purchased_rate</code></pre>
         <pre class="prettyprint"><code>const sender = {
    name: "Dispatch Roasters"
    email: roasters@getdispatch.app,
-   loction_id: "loc_j83498fhweofh4937fh"
+   location_id: "loc_j83498fhweofh4937fh"
 }
 
 const recipient = {
@@ -1329,7 +1329,7 @@ const delivery = response.data //this will have the delivery object</code></pre>
 
 <div class="columns">
     
-    <div class='param-desc column is-7'><p>Returns the response object. The data property <a href="global.html#Delivery"><code>Responses's data property</code></a> will be an array of <a href="global.html#Delivery"><code>Delivery</code></a> objects.</p></div>
+    <div class='param-desc column is-7'><p>Returns the response object. The Response's <a href="global.html#Delivery"><code>data property</code></a> will be an array of <a href="global.html#Delivery"><code>Delivery</code></a> objects.</p></div>
     
     
     <div class='column is-5 has-text-left'>
@@ -1357,7 +1357,7 @@ const deliveries = response.data //this will have an array of delivery objects
 
 //check if there are more values in the database
 if (data.pagination.has_more) {
-   //the delivery object have a lot of data and seting the pagination to a loop can really hurt performance
+   //the delivery objects have a lot of data and setting the pagination to a loop can really hurt performance
    //It's advised to just query in batches
    //To query for the next page (batch) of deliveries you could do something like:
 
@@ -1710,7 +1710,7 @@ const response = dispatch.deliveries.refund("del_28374n8iudshf3nqifub")</code></
 
 <div class="columns">
     
-    <div class='param-desc column is-7'><p>Returns the response object. The data property <a href="global.html#Delivery"><code>Responses's data property</code></a> will be the <a href="global.html#Delivery"><code>Delivery</code></a> object.</p></div>
+    <div class='param-desc column is-7'><p>Returns the response object. The Response's <a href="global.html#Delivery"><code>data property</code></a> will be an array of <a href="global.html#Delivery"><code>Delivery</code></a> objects.</p></div>
     
     
     <div class='column is-5 has-text-left'>

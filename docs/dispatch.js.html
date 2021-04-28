@@ -98,11 +98,11 @@ const { _retrieveLocation } = require("./modules/locations");
 const _createNetworkConfig = require("./util/network-config");
 
 /**
- * Creates a new Dispatch class. Once this class is initalized, you can use any of the namespaces with a method to use tge API.
+ * Creates a new Dispatch class. Once this class is initialized, you can use any of the namespaces with a method to use tge API.
  * @name Dispatch
  * @class
- * @classdesc This is the main class that will be the entry point into dispatch. You can initalize this class with your API Key.
- * @param {string} token - initalize the class with your API key.
+ * @classdesc This is the main class that will be the entry point into dispatch. You can initialize this class with your API Key.
+ * @param {string} token - initialize the class with your API key.
  * @param {string} [env="production"] - Unless you have development keys, just leave this to the default value.
  *
  * @example const dispatch = new Dispatch(&lt;YOUR_API_KEY>)
@@ -127,7 +127,7 @@ module.exports = class Dispatch {
        *
        * @method retrieve
        * @param {string} id - The ID of the delivery that you want to retrieve
-       * @returns {Promise&lt;Response>} Returns the response object. The data property [Responses's data property]{@link Delivery} will be the {@link Delivery} object.
+       * @returns {Promise&lt;Response>} Returns the response object. The Response's [data property]{@link Delivery} will be an array of {@link Delivery} objects.
        *
        * @example const response = await dispatch.deliveries.retrieve("del_fjdsklfju8jisjfdisoiu89j")
        * const delivery = response.data //this will contain the delivery object
@@ -155,14 +155,14 @@ module.exports = class Dispatch {
        * @param {Object} options - The options that you can use to return results
        * @param {integer} options.limit - The amount of deliveries you want returned. The default is 15, but ranges from 1 to 100
        * @param {integer} options.page - The page you want to deliveries to start at. For example, a limit of 15 with a page value of 3, would return deliveries 30 - 45. The response object for the .list() method will have a pagination property which you can use to determine if there are more values in the database.
-       * @returns {Promise&lt;Response>} Returns the response object. The data property [Responses's data property]{@link Delivery} will be an array of {@link Delivery} objects.
+       * @returns {Promise&lt;Response>} Returns the response object. The Response's [data property]{@link Delivery} will be an array of {@link Delivery} objects.
        *
        * @example const response = await dispatch.deliveries.list()
        * const deliveries = response.data //this will have an array of delivery objects
        *
        * //check if there are more values in the database
        * if (data.pagination.has_more) {
-       *    //the delivery object have a lot of data and seting the pagination to a loop can really hurt performance
+       *    //the delivery objects have a lot of data and setting the pagination to a loop can really hurt performance
        *    //It's advised to just query in batches
        *    //To query for the next page (batch) of deliveries you could do something like:
        *
@@ -204,13 +204,13 @@ module.exports = class Dispatch {
        * @param {Array&lt;Parcel>} parcels - An array of parcels that you want to send
        * @param {Object} [options] - Additional options to include in your delivery.
        * @param {Array} [options.rate_cards] - An array of rate cards that you want to use for this transaction. These will be used instead of the rate cards you set on your Dispatch Dashboard
-       * @returns {Promise&lt;Response>} Returns the response object. The data property [Responses's data property]{@link Delivery} will be the {@link Delivery} object.
+       * @returns {Promise&lt;Response>} Returns the response object. The Response's [data property]{@link Delivery} will be an array of {@link Delivery} objects.
        *
        * @example
        * const sender = {
        *    name: "Dispatch Roasters"
        *    email: roasters@getdispatch.app,
-       *    loction_id: "loc_j83498fhweofh4937fh"
+       *    location_id: "loc_j83498fhweofh4937fh"
        * }
        *
        * const recipient = {
@@ -258,19 +258,19 @@ module.exports = class Dispatch {
        * @param {string} delivery_id - The ID of the delivery for which you want to purchase a rate
        * @param {string} rate_id - The ID of the rate tha you wish to purchase
        * @param {Object} [options] - Additional options you want to add while purchasing this rate
-       * @param {string} [options.payment_methood] - The ID of the payment method you wish to use. We'll use the default card you have on file otherwise.
-       * @returns {Promise&lt;Response>} Returns the response object. The data property [Responses's data property]{@link Delivery} will be the {@link Delivery} object.
+       * @param {string} [options.payment_method] - The ID of the payment method you wish to use. We'll use the default card you have on file otherwise.
+       * @returns {Promise&lt;Response>} Returns the response object. The Response's [data property]{@link Delivery} will be an array of {@link Delivery} objects.
        *
        * @example
        *
-       * //assuming we already created the delviery, we have access to the rates array, if any were returned
+       * //assuming we already created the delivery, we have access to the rates array, if any were returned
        * //we can pass back the id of the rate that we want to purchase the delivery
        *
        * const delivery = response.data
        * const rate = delivery.rates[0].id //selected the first rate
        * const response = await dispatch.deliveries.buy(delivery.id, rate.id)
        *
-       * //if the purchase was successful, the purchased rate will be avaible on the purchased_rate property
+       * //if the purchase was successful, the purchased rate will be available on the purchased_rate property
        * const purchasedRate = response.data.purchased_rate
        */
       buy: function (delivery_id, rate_id, options = {}) {
@@ -332,7 +332,7 @@ module.exports = class Dispatch {
     //    *
     //    * @method retrieve
     //    * @param {string} id - The ID of the location that you want to retrieve
-    //    * @returns {Promise&lt;Response>} Returns the response object. The data property [Responses's data property]{@link Location} will be the {@link Location} object.
+    //    * @returns {Promise&lt;Response>} Returns the response object. The Response's [data property]{@link Location} will be an array of {@link Location} objects.
     //    *
     //    * @example const response = await dispatch.locations.retrieve("loc_fjdsklfju8jisjfdisoiu89j")
     //    * const delivery = response.data //this will contain the location object
@@ -363,12 +363,12 @@ module.exports = class Dispatch {
  * @typedef {Object} Delivery
  * @property {string} id - The delivery ID
  * @property {integer} amount - The amount that was payed for the delivery as an integer.
- * @property {Object} branding - Specified the branding for thsi delivery
- * @property {integer} branding.email - If an email will be sent by Dispatch, this determines whcih logo will be on the email
+ * @property {Object} branding - Specified the branding for this delivery
+ * @property {integer} branding.email - If an email will be sent by Dispatch, this determines which logo will be on the email
  * @property {integer} branding.label - Which logo should be placed on the label
- * @property {Object} courier - The courier object if the delivery is on demand. This will be depricated in the future as the same data is found in the Provider object that is attached to the Rate.
+ * @property {Object} courier - The courier object if the delivery is on demand. This will be deprecated in the future as the same data is found in the Provider object that is attached to the Rate.
  * @property {integer} created_at - epoch time in seconds
- * @todo {Object} customs_declaration - Any customes declarations for international shipping
+ * @todo {Object} customs_declaration - Any customs declarations for international shipping
  * @property {string} estimated_delivery - A human readable string value for the estimated delivery date and time.
  * @property {Object} grace_period -The grace period that an on_demand courier will wait for and the fees for going over it.
  * @property {integer} grace_period.fee - The grace period fee as an integer.
@@ -387,27 +387,27 @@ module.exports = class Dispatch {
  * @property {Array&lt;Rate>} rates - an array of rates that are returned when the delivery intent was created.
  * @property {Object&lt;Entity>} recipient - The recipient object. This is the person who is getting the package.
  * @property {string} refund_status - The refund status if one was requested. Funds will be credited back to the account after the refund status is approved by the carrier. Dispatch couriers refunds are immediate.
- * @property {Object&lt;Entity>} sender - The object representing the sender, which is the entity that initally sent that package.
+ * @property {Object&lt;Entity>} sender - The object representing the sender, which is the entity that initially sent that package.
  * @property {integer} shipment_date - The time in seconds from Epoch in seconds of the shipment date.
  * @property {string} status - The tracking status for the delivery. For a complete list see the github readme.
  * @property {string} substatus - The tracking substatus for the delivery. This gives much more detail about the package whereabouts. For a complete list see the github readme.
  * @property {boolean} test - If this was a test delivery
- * @property {boolean} tracking_notificaitons - Indicates if dispatch will send update emails for the delivery. This value is set on your dashboard {@link https://app.getdispatch.app/settings/company/branding}
+ * @property {boolean} tracking_notifications - Indicates if dispatch will send update emails for the delivery. This value is set on your dashboard {@link https://app.getdispatch.app/settings/company/branding}
  * @property {string} tracking_number - The tracking number for the delivery
  * @property {Object&lt;Tracker>} tracking_status - The current tracking status for this delivery
- * @property {Array&lt;Tracker>} tracking_updates - An array of all of the tracking updates for this delviery including the current one.
+ * @property {Array&lt;Tracker>} tracking_updates - An array of all of the tracking updates for this delivery including the current one.
  * @property {string} type - The type of delivery this is: "traditional" or "marketplace"
  * @property {integer} updated_at - epoch time in seconds
  * @property {integer} value - The declared value of this delivery
  * @property {Object} webhooks - the webhook object that has all of the events that wil be fired for this delivery
  * @property {Array&lt;string>} webhooks.delivery_created - an array of urls to notify when a delivery is created
  * @property {Array&lt;string>} webhooks.delivery_expired - an array of urls to notify when a delivery expires. Rates as good for 15 minutes until they expire.
- * @property {Array&lt;string>} webhooks.delivery_purchased - an array of urls to notify when a delivery is successully purchased
+ * @property {Array&lt;string>} webhooks.delivery_purchased - an array of urls to notify when a delivery is successfully purchased
  * @property {Array&lt;string>} webhooks.tracking_updated - an array of urls to notify when there is a tracking update to a delivery.
  */
 
 /**
- * The Entity object, whcih descripes a company or person
+ * The Entity object, which describes a company or person
  * @typedef {Object} Entity
  * @property {string} id - The entity ID
  * @property {Object} address - The address details of this entity
@@ -442,7 +442,7 @@ module.exports = class Dispatch {
  * @property {integer} created_at - epoch time in seconds
  * @property {string} currency - the currency of this rate card as lowercase ISO 4217 format {@link https://en.wikipedia.org/wiki/ISO_4217}
  * @property {boolean} dispatch - if this rate was originated by dispatch APIs
- * @property {Object} service_level - descripes how long the delivery will take
+ * @property {Object} service_level - describes how long the delivery will take
  * @property {(string)} service_level.id - The ID of the service level. Something like "dispatch_same_day"
  * @property {(string)} service_level.name - The human readable name of the service level. Something like "Same Day" or "USPS Overnight".
  * @property {string} service_level.arrives_by - the human readable string for the delivery date and time. For example: "Today by 9pm"
@@ -454,20 +454,20 @@ module.exports = class Dispatch {
  * @property {integer} grace_period.minutes - The amount of minutes that the grace period is good for.
  * @property {string} id - the id of this rate. This id will be passed to dispatch to purchase the rate
  * @property {(Object|null)} invoice - If the rate is generated by an on demand courier from dispatch, this will be a breakdown of the total cost.  Otherwise will be null
- * @property {integer} invoice.additional_items_fee - The cost for additional items if the order contained multiple packages and the courier chaneges this fee
+ * @property {integer} invoice.additional_items_fee - The cost for additional items if the order contained multiple packages and the courier changes this fee
  * @property {integer} invoice.dropoff_fee - The fixed dropoff fee that this courier charges
  * @property {integer} invoice.dropoff_rate - The rate this courier charges for the distance from pickup location to dropoff location
  * @property {integer} invoice.local_fee - If there are any local fees that are charged in the pickup or dropoff city
- * @property {integer} invoice.pickup_fee - The fixed pickuo fee that this courier charges
+ * @property {integer} invoice.pickup_fee - The fixed pickup fee that this courier charges
  * @property {integer} invoice.pickup_rate - The rate this courier charges for the distance from to get to the pickup location
  * @property {(string|null)} invoice.rate_card - The id of the rate card that was used for this invoice
- * @property {integer} invoice.subtital - The total before taxes
+ * @property {integer} invoice.subtotal - The total before taxes
  * @property {integer} invoice.tax - The tax charged for this delivery
  * @property {integer} invoice.toll - Any tolls that were charged for this delivery
  * @property {integer} invoice.total - The final total for this invoice. This number is the same as the "amount"
  * @property {integer} lead_time_hours - The amount of hours that are needed in advance before the courier can get the the pickup destination
  * @property {boolean} on_demand - If this rate is an on demand courier
- * @property {integer} pickup_at - @depricated epoch time in seconds when this order will be picked up. Same as service_level.pickup_at
+ * @property {integer} pickup_at - @deprecated epoch time in seconds when this order will be picked up. Same as service_level.pickup_at
  * @property {Object} provider - The provider is the courier or carrier that will be conducting the delivery
  * @property {string} provider.id - The ID of this provider
  * @property {string} provider.logo_url - The logo that of this provider
@@ -500,18 +500,18 @@ module.exports = class Dispatch {
  * @param {string} [NewAddress.address_line2] - The second line of the street address if needed
  * @param {string} NewAddress.city - The name of the city
  * @param {string} NewAddress.state - The state. This can be the full state name like California or an abbreviation like NY
- * @param {string} NewAddress.zipcode - The zipcode. Technocally this is optional but highly recommended you add this because it makes the address parser much more accurate.
+ * @param {string} NewAddress.zipcode - The zipcode. Technically this is optional but highly recommended you add this because it makes the address parser much more accurate.
  */
 
 /**
- * The Parcel Object. When you create a parcel or retreive a delivery, you'll always be referencing an array of parcels
+ * The Parcel Object. When you create a parcel or retrieve a delivery, you'll always be referencing an array of parcels
  * @typedef {Object} Parcel
  * @property {integer} length - The length of the parcel in inches
  * @property {integer} width - The width of the parcel in inches
  * @property {integer} height - The height of the parcel in inches
  * @property {integer} weight - The weight of the parcel in pounds
  * @property {string} special_handling - Any special handling instructions that will be placed on the label. Limited to 12 characters. If you add more than 12 characters, we'll just use the first 12 instead of returning an error. The reason for the limit is that this is the most amount of characters that we can fit within the bounds of the current label.
- * @property {Array&lt;Item>} [items] - you can optionally include items that are in the packages box. This can be used for on click returns in the future
+ * @property {Array&lt;Item>} [items] - you can optionally include items that are in the box. This can be used for one click returns and custom disposition codes in the future.
  */
 
 /**
@@ -522,7 +522,7 @@ module.exports = class Dispatch {
  * @property {integer} [price] - The item's price as an integer
  * @property {integer} [value] - The item's declared values as an integer
  * @property {string} [product_id] - The id used to identify this product on your inventory system
- * @property {string} [varient_id] - If this is a specific varient of a product id
+ * @property {string} [variant_id] - If this is a specific variant of a product id
  * @property {integer} [length] - The length of the item in inches. Can use this for cheaper return labels if we know the box can be smaller.
  * @property {integer} [width] - The width of the item in inches. Can use this for cheaper return labels if we know the box can be smaller.
  * @property {integer} [height] - The height of the item in inches. Can use this for cheaper return labels if we know the box can be smaller.
@@ -533,11 +533,11 @@ module.exports = class Dispatch {
  * The Tracker Object. This describes a tracking update.
  * @typedef {Object} Tracker
  * @property {Object} address - This is a basic address field that gives the general location of the item
- * @property {(String|null)} address.address_line1 - The street address. Many carrier do not support this field and it can often be null
+ * @property {(String|null)} address.address_line1 - The street address. Many carriers do not support this field and it can often be null
  * @property {String} address.city - Name of the city
  * @property {String} address.state - Name of the state, not abbreviated
  * @property {String} address.zipcode - The zipcode
- * @property {(String|null)} comment - If the courier added a comment for this update
+ * @property {(String|null)} comment - If the courier added a comment for this update it will be here. These comments are not filtered by Dispatch at the moment, so it's safer to use the `message` property for customer notifications.
  * @property {String} message - The human readable message about this status given by Dispatch
  * @property {String} status - The status string
  * @property {String} substatus - The sub_status string
