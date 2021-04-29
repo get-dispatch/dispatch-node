@@ -250,7 +250,7 @@
 
   
 
-  <td class="description last"><p>The ID of the delivery for which you want to purchase a rate</p></td>
+  <td class="description last"><p>The ID of the delivery for which you want to purchase a rate.</p></td>
 </tr>
 
 
@@ -283,7 +283,7 @@
 
   
 
-  <td class="description last"><p>The ID of the rate tha you wish to purchase</p></td>
+  <td class="description last"><p>The ID of the rate tha you wish to purchase.</p></td>
 </tr>
 
 
@@ -318,7 +318,7 @@
 
   
 
-  <td class="description last"><p>Additional options you want to add while purchasing this rate</p></td>
+  <td class="description last"><p>Additional options you want to add while purchasing this rate.</p></td>
 </tr>
 
   
@@ -556,7 +556,7 @@ const purchasedRate = response.data.purchased_rate</code></pre>
 
   
 
-  <td class="description last"><p>the details about there this package is coming from</p></td>
+  <td class="description last"><p>The details about there this package is coming from.</p></td>
 </tr>
 
   
@@ -588,7 +588,7 @@ const purchasedRate = response.data.purchased_rate</code></pre>
 
   
 
-  <td class="description last"><p>The name of the sender. This could be a company name or a person's name</p></td>
+  <td class="description last"><p>The name of the sender. This could be a company name or a person's name.</p></td>
 </tr>
 
   
@@ -619,7 +619,7 @@ const purchasedRate = response.data.purchased_rate</code></pre>
 
   
 
-  <td class="description last"><p>The email of the sender. For on demand deliveries, this email will be used by the courier to contact the sender in case of any issues</p></td>
+  <td class="description last"><p>The email of the sender. For on demand deliveries, this email will be used by the courier to contact the sender in case of any issues.</p></td>
 </tr>
 
   
@@ -652,7 +652,7 @@ const purchasedRate = response.data.purchased_rate</code></pre>
 
   
 
-  <td class="description last"><p>The phone number of this sender that an on demand courier could use to contact this sender if there is an issue</p></td>
+  <td class="description last"><p>The phone number of this sender that an on demand courier could use to contact this sender if there is an issue.</p></td>
 </tr>
 
   
@@ -721,7 +721,7 @@ const purchasedRate = response.data.purchased_rate</code></pre>
 
   
 
-  <td class="description last"><p>If you do not have a location_id, you can just send your address and we'll create a location object for you. Your address can just be a full string and we'll parse it on our end, or you can send it as an object</p></td>
+  <td class="description last"><p>If you do not have a location_id, you can just send your address and we'll create a location object for you. Your address can just be a full string and we'll parse it on our end, or you can send it as an object.</p></td>
 </tr>
 
   
@@ -756,7 +756,7 @@ const purchasedRate = response.data.purchased_rate</code></pre>
 
   
 
-  <td class="description last"><p>the details about there this package is coming from</p></td>
+  <td class="description last"><p>The details about there this package is coming from.</p></td>
 </tr>
 
   
@@ -788,7 +788,7 @@ const purchasedRate = response.data.purchased_rate</code></pre>
 
   
 
-  <td class="description last"><p>The name of the sender. This could be a company name or a person's name</p></td>
+  <td class="description last"><p>The name of the sender. This could be a company name or a person's name.</p></td>
 </tr>
 
   
@@ -819,7 +819,7 @@ const purchasedRate = response.data.purchased_rate</code></pre>
 
   
 
-  <td class="description last"><p>The email of the sender. For on demand deliveries, this email will be used by the courier to contact the sender in case of any issues</p></td>
+  <td class="description last"><p>The email of the sender. For on demand deliveries, this email will be used by the courier to contact the sender in case of any issues.</p></td>
 </tr>
 
   
@@ -852,7 +852,7 @@ const purchasedRate = response.data.purchased_rate</code></pre>
 
   
 
-  <td class="description last"><p>The phone number of this recipient that an on demand courier could use to contact this recipient if there is an issue</p></td>
+  <td class="description last"><p>The phone number of this recipient that an on demand courier could use to contact this recipient if there is an issue._createDelivery.</p></td>
 </tr>
 
   
@@ -921,7 +921,7 @@ const purchasedRate = response.data.purchased_rate</code></pre>
 
   
 
-  <td class="description last"><p>An array of parcels that you want to send</p></td>
+  <td class="description last"><p>An array of parcels that you want to send.</p></td>
 </tr>
 
 
@@ -990,7 +990,7 @@ const purchasedRate = response.data.purchased_rate</code></pre>
 
   
 
-  <td class="description last"><p>An array of rate cards that you want to use for this transaction. These will be used instead of the rate cards you set on your Dispatch Dashboard</p></td>
+  <td class="description last"><p>An array of rate cards that you want to use for this transaction. These will be used instead of the rate cards you set on your Dispatch Dashboard.</p></td>
 </tr>
 
   
@@ -1358,8 +1358,8 @@ const deliveries = response.data //this will have an array of delivery objects
 //check if there are more values in the database
 if (data.pagination.has_more) {
    //the delivery objects have a lot of data and setting the pagination to a loop can really hurt performance
-   //It's advised to just query in batches
-   //To query for the next page (batch) of deliveries you could do something like:
+   //it's advised to just query in pages
+   //io query for the next page of deliveries you could do something like:
 
    const nextResponse = dispatch.deliveries.list({limit: response.pagination.limit, page: response.pagination.current_page + 1})
 }</code></pre>
@@ -1577,7 +1577,7 @@ const response = dispatch.deliveries.refund("del_28374n8iudshf3nqifub")</code></
     
     
     <div class="description">
-        <p>Retrieves a delivery using it's ID</p>
+        <p>Retrieves a delivery using its ID</p>
     </div>
     
 
