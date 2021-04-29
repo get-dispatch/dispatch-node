@@ -62,7 +62,7 @@ dispatch.deliveries
     const delivery = response.data;
 
     //your logic to select the rate you want.
-    //You could have a customer select it or
+    //you could have a customer select it or
     //you can filter by price or service level
 
     //in this example, we're selecting the first rate
@@ -77,6 +77,20 @@ dispatch.deliveries
   });
 ```
 
+## Delivery Lifecycle
+
+The label generation process is a multi-step process and understanding how this works will make using the API much easier.
+
+1. A request is made using the `sender`, `recipient`, and `parcels` fields. Here we are creating a delivery with all of the possible rates from any providers you have enabled on your dashboard.
+
+2. During this step, the rates are held for 15 minutes. If no rate is purchased during this interval, the delivery will expire. You can of course create a new delivery in this case.
+
+3. Within these 15 minutes, you can now select one of these rates to buy. The selection process is entirely based on your business logic like displaying options to customers or having your backend decide the best option.
+
+4. Once the transaction has gone through, the delivery will be populated with the label image url and all other properties you need for tracking.
+
+5. At this point, if you have made a mistake, you are able to request a refund for a shipping label. You have up to 14 days to request a refund for a traditional carrier. For on-demand couriers, you'll have a 5 minute time window to request a refund.
+
 ## Webhooks
 
 From the [Dispatch Dashboard](https://app.getdispatch.app/settings/api) you can configure webhooks. There are several webhook statuses you can choose from. Our webhooks expect a response with a status code of `200` within 5 seconds. This should be enough time to process the data and respond back to us. If we do not receive a response back from you within 5 seconds, we'll retry the webhook a second time after waiting for 3 seconds.
@@ -86,7 +100,7 @@ Our webhooks will attempt to `POST` to your endpoint.
 | Event              | Description                                                                                                                                                                     |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | delivery_created   | This will fire when the delivery intent was created. This is before the purchase was made                                                                                       |
-| delivery_expired   | This will fire after a delivery intent expires. Delivery intents that are not captured within 15 minutes after automatically expired                                            |
+| delivery_canceled  | This will fire after a delivery was canceled. This is usually due to a refund                                                                                                   |
 | delivery_purchased | This webhook will fire after a delivery intent is successfully captured                                                                                                         |
 | tracking_updated   | This webhook will fire when there are any tracking updates to the package. The tracking updated webhook does not fire when the initial delivery intent is created or purchased. |
 
@@ -98,7 +112,7 @@ Dispatch packages have two "statuses": the `status` and `substatus`. The `status
 
 Below is the list of statuses that we support. Keep in mind that the [Tracker](https://get-dispatch.github.io/dispatch-node/global.html#Tracker) object will always have a human readable message that you can display.
 
-> ==As we are in beta, there is a chance that some of these statuses will change before we hit V1.==
+> As we are in beta, there is a chance that some of these statuses will change before we hit V1.
 
 | status        | substatus               | is_issue | description                                        |
 | ------------- | ----------------------- | -------- | -------------------------------------------------- |
@@ -107,7 +121,7 @@ Below is the list of statuses that we support. Keep in mind that the [Tracker](h
 | `transit`     | `courier_at_sender`     | false    | Courier arrived to pickup up the package           |
 | `transit`     | `contact_courier`       | true     | Courier needs to be contacted                      |
 | `transit`     | `delayed`               | true     | Package will not get there on time                 |
-| `transit`     | `delivery_attempted`    | true     | Delivery attempted but not compelted               |
+| `transit`     | `delivery_attempted`    | true     | Delivery attempted but not completed               |
 | `transit`     | `delivery_rescheduled`  | true     | Delivery rescheduled                               |
 | `transit`     | `delivery_scheduled`    | false    | Delivery data scheduled                            |
 | `transit`     | `location_inaccessible` | true     | Courier could not get to the location              |
@@ -115,7 +129,7 @@ Below is the list of statuses that we support. Keep in mind that the [Tracker](h
 | `transit`     | `package_accepted`      | false    | Package was accepted. Taken from sender.           |
 | `transit`     | `package_at_waypoint`   | false    | Package was accepted by an intermediate location   |
 | `transit`     | `in_transit`            | false    | Package is in transit                              |
-| `transit`     | `pickup_availble`       | false    | Pickup avaible                                     |
+| `transit`     | `pickup_available`      | false    | Pickup available                                   |
 | `transit`     | `package_damaged`       | true     | Package was damaged in transit                     |
 | `delivered`   | `delivered`             | false    | Package was successfully delivered                 |
 | `returned`    | `return_to_sender`      | true     | Package was returned                               |
