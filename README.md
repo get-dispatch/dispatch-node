@@ -106,9 +106,9 @@ Our webhooks will attempt to `POST` to your endpoint.
 
 Each webhook will contain the entire [Delivery](https://get-dispatch.github.io/dispatch-node/global.html#Delivery) object. Most often, you're probably interested in the `tracking_updates` property which is an ordered array of [Tracker](https://get-dispatch.github.io/dispatch-node/global.html#Tracker) objects or the `tracking_status` property which is the current [Tracker](https://get-dispatch.github.io/dispatch-node/global.html#Tracker) object.
 
-## Package Statues
+## Package Statuses
 
-Dispatch packages have two "statues": the `status` and `substatus`. The `status` describes the general concept of what is happening to the package, and the substatus gives you more detail about the package. For example, the `status` could be `in_transit` but the substatus will give you details about the transit like `out_for_delivery`. Internally at Dispatch, we use the `substatus` field more often. The `status` and `substatus` can be found on the [Delivery](https://get-dispatch.github.io/dispatch-node/global.html#Delivery) object and the [Tracker](https://get-dispatch.github.io/dispatch-node/global.html#Tracker) object.
+Dispatch packages have two "statuses": the `status` and `substatus`. The `status` describes the general concept of what is happening to the package, and the substatus gives you more detail about the package. For example, the `status` could be `in_transit` but the substatus will give you details about the transit like `out_for_delivery`. Internally at Dispatch, we use the `substatus` field more often. The `status` and `substatus` can be found on the [Delivery](https://get-dispatch.github.io/dispatch-node/global.html#Delivery) object and the [Tracker](https://get-dispatch.github.io/dispatch-node/global.html#Tracker) object.
 
 Below is the list of statuses that we support. Keep in mind that the [Tracker](https://get-dispatch.github.io/dispatch-node/global.html#Tracker) object will always have a human readable message that you can display.
 
