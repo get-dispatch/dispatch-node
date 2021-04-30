@@ -199,7 +199,7 @@ module.exports = class Dispatch {
        * @param {Object} recipient - The details about there this package is coming from.
        * @param {string} recipient.name - The name of the sender. This could be a company name or a person's name.
        * @param {string} recipient.email - The email of the sender. For on demand deliveries, this email will be used by the courier to contact the sender in case of any issues.
-       * @param {string} [recipient.phone] - The phone number of this recipient that an on demand courier could use to contact this recipient if there is an issue._createDelivery.
+       * @param {string} [recipient.phone] - The phone number of this recipient that an on demand courier could use to contact this recipient if there is an issue.
        * @param {(string|Object&lt;NewAddress>)} recipient.address - Your address can just be a full string and we'll parse it on our end, or you can send it as an object
        * @param {Array&lt;Parcel>} parcels - An array of parcels that you want to send.
        * @param {Object} [options] - Additional options to include in your delivery.
@@ -439,10 +439,11 @@ module.exports = class Dispatch {
  * @property {Object} service_level - Describes how long the delivery will take.
  * @property {(string)} service_level.id - The ID of the service level. Something like "dispatch_same_day".
  * @property {(string)} service_level.name - The human readable name of the service level. Something like "Same Day" or "USPS Overnight".
- * @property {string} service_level.arrives_by - The human readable string for the delivery date and time. For example: "Today by 9pm".
+ * @property {integer} service_level.arrives_by - Epoch time seconds when this delivery is expected to arrive at its destination.
  * @property {integer} service_level.days - The amount of days that this delivery is estimated to take.
+ * @property {boolean} service_level.guaranteed - If this delivery is guaranteed by the `arrives_by` time
  * @property {(integer|null)} service_level.pickup_at - Epoch time in seconds when this order will be picked up.
- * @property {(string|null)} service_level.terms - The terms for the service level.
+ * @property {(string)} service_level.terms - The human readable string for the delivery date and time. For example: "Today by 9pm".
  * @property {Object} grace_period -The grace period that an on_demand courier will wait for and the fees for going over it.
  * @property {integer} grace_period.fee - The grace period fee as an integer.
  * @property {integer} grace_period.minutes - The amount of minutes that the grace period is good for.
