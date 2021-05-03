@@ -376,6 +376,7 @@ module.exports = class Dispatch {
  * @todo {Object} insurance - The object representing the insurance.
  * @property {string} intent_status - The status of the delivery intent. An intent can be "created" when rates were generated but not purchased yet, "expired" if the intent was not captured within 15 mins, "captured" which means that the intent was paid for, and "deleted" which is when the intent was removed from the database.
  * @property {string} label_name - The name of the shipping label as saved in the storage bucket. @deprecated This property will be removed.
+ * @property {string} label_url - The url from which you can download your label. This URL, can be accessed for 24 hours until it expires. Each time that you retrieve a delivery, a new label url is generated for you.
  * @property {integer} lead_time_hours - The amount of lead time that was required for this delivery before an on_demand courier can pick it up.
  * @property {Array} live_location - The lat and lon coordinates of the the current location of the delivery. Not every courier supports this.
  * @property {Boolean} on_demand - If this delivery is for an on_demand courier.
@@ -491,11 +492,11 @@ module.exports = class Dispatch {
 /**
  * The New Address Object. When creating a new address, you can either send the address a a string value or an object. If you're choosing an object, below are the properties you need to provide.
  * @typedef {Object} NewAddress
- * @param {string} NewAddress.address_line1 - The street address for this delivery.
- * @param {string} [NewAddress.address_line2] - The second line of the street address if needed.
- * @param {string} NewAddress.city - The name of the city.
- * @param {string} NewAddress.state - The state. This can be the full state name like California or an abbreviation like NY.
- * @param {string} NewAddress.zipcode - The zipcode. Technically this is optional but highly recommended you add this because it makes the address parser much more accurate.
+ * @param {string} address_line1 - The street address for this delivery.
+ * @param {string} [address_line2] - The second line of the street address if needed.
+ * @param {string} city - The name of the city.
+ * @param {string} state - The state. This can be the full state name like California or an abbreviation like NY.
+ * @param {string} zipcode - The zipcode. Technically this is optional but highly recommended you add this because it makes the address parser much more accurate.
  */
 
 /**
