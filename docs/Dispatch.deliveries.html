@@ -356,6 +356,39 @@
 </tr>
 
   
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>metadata</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Integer</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>You can add metadata as key-value pairs to a delivery. To remove a property, pass <code>null</code> as the value. If you want to remove all key value pairs, pass an empty object.</p></td>
+</tr>
+
+  
 
 
         
@@ -402,7 +435,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line175">line 175</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line233">line 233</a>
             </span>
         </p>
     
@@ -1027,6 +1060,39 @@ const purchasedRate = response.data.purchased_rate</code></pre>
 </tr>
 
   
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>metadata</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Integer</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>You can add metadata as key-value pairs to a delivery. To remove a property, pass <code>null</code> as the value. If you want to remove all key value pairs, pass an empty object.</p></td>
+</tr>
+
+  
 
 
         
@@ -1124,10 +1190,45 @@ const purchasedRate = response.data.purchased_rate</code></pre>
 
 
 
-    <h5>Example</h5>
+    <h5>Examples</h5>
     
     
-        <pre class="prettyprint"><code>const sender = {
+        <pre class="prettyprint"><code>//This is a basic example for a standard shipment creating without additional options.
+
+const sender = {
+   name: "Dispatch Roasters"
+   email: roasters@getdispatch.app,
+   location_id: "loc_j83498fhweofh4937fh"
+}
+
+const recipient = {
+   name: "Jamie Jones"
+   email: jamie.jones@getdispatch.app,
+   address: {
+       address_line1: "500 7th Ave",
+       city: "New York",
+       state: "NY"
+       zipcode: "10018"
+   }
+}
+
+const parcel = {
+   length: 10 // inches
+   width: 10 // inches
+   height: 10 // inches
+   weight: 10 // pounds
+}
+
+
+
+const response = await dispatch.deliveries.create(sender, recipient, [parcel])
+const delivery = response.data //this will have the delivery object</code></pre>
+    
+
+    
+        <pre class="prettyprint"><code>//in this example, we'll create the same shipment but add additional options
+
+const sender = {
    name: "Dispatch Roasters"
    email: roasters@getdispatch.app,
    location_id: "loc_j83498fhweofh4937fh"
@@ -1152,14 +1253,36 @@ const parcel = {
 }
 
 //if you wanted to add options, like the checkout_total, you can do so in the fourth argument
-//if you don't want to pass additional options, just don't pass the fourth argument
 const options = {
+
+   //the checkout total is used to return free shipping options. These settings
+   //are configured once on the Dispatch dashboard
    checkout_total: 10000 //this would be $100.00 since values are stored as integers
+
+
+   //the metadata allowed you to add custom properties to the delivery object
+   //most often used for an order number or customer number to be able to match
+   //delivery with your internal database later. The metadata property will be
+   //available on the delivery object when you retrieve it
+   metadata: {
+       customer_id: 123456789,
+       order_id: 987654321
+       temp_value: null //passing null will delete the key, if you had one saved before
+   }
+
 }
 
 
-const response = await dispatch.deliveries.create(sender, recipient, [parcel], options)
-const delivery = response.data //this will have the delivery object</code></pre>
+dispatch.deliveries.create(sender, recipient, [parcel], options).then((response) => {
+   const delivery = response.data
+   console.log(delivery.metadata)
+
+   //handle post delivery creation operations...
+}).catch((err) => {
+   console.error(err)
+
+   //handle errors...
+})</code></pre>
     
 
 
@@ -1578,7 +1701,7 @@ if (data.pagination.has_more) {
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line213">line 213</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line272">line 272</a>
             </span>
         </p>
     
