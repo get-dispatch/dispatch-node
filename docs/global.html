@@ -253,7 +253,53 @@
 
     
 
-    <td class="description last"><p>The amount that was payed for the delivery as an integer. (e.g., $15.76 would be represented as 1576).</p></td>
+    <td class="description last"><p>The price of this rate as an integer with discount applied. (e.g., $15.76 would be represented as 1576).</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>billed_amount</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The price of this rate as an integer without discounts applied. (e.g., $15.76 would be represented as 1576). This is the total amount that Dispatch charged your payment information in file.</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>sender_discount</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The discount for this rate as an integer that you have specified. (e.g., $15.76 would be represented as 1576). This gets calculated based on your settings on the Dispatch dashboard.</p></td>
 </tr>
 
         
@@ -1116,7 +1162,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line274">line 274</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line284">line 284</a>
             </span>
         </p>
     
@@ -1739,7 +1785,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line318">line 318</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line330">line 330</a>
             </span>
         </p>
     
@@ -2157,7 +2203,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line426">line 426</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line441">line 441</a>
             </span>
         </p>
     
@@ -2234,7 +2280,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line405">line 405</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line420">line 420</a>
             </span>
         </p>
     
@@ -2518,7 +2564,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line415">line 415</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line430">line 430</a>
             </span>
         </p>
     
@@ -2602,7 +2648,53 @@
 
     
 
-    <td class="description last"><p>The price of this rate as an integer (e.g., $15.76 would be represented as 1576).</p></td>
+    <td class="description last"><p>The price of this rate as an integer with discount applied. (e.g., $15.76 would be represented as 1576).</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>billed_amount</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The price of this rate as an integer without discounts applied. (e.g., $15.76 would be represented as 1576). This is the total amount that Dispatch charged your payment information in file.</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>sender_discount</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The discount for this rate as an integer that you have specified. (e.g., $15.76 would be represented as 1576). This gets calculated based on your settings on the Dispatch dashboard.</p></td>
 </tr>
 
         
@@ -2629,6 +2721,29 @@
     
 
     <td class="description last"><p>The carrier account / custom rate card that was used to price this rate.</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>checkout_total</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The total cart/checkout value you submitted as an integer (e.g., $15.76 would be represented as 1576). This value is used to determine the free shipping tier that you can set up on the Dispatch dashboard.</p></td>
 </tr>
 
         
@@ -3570,7 +3685,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line345">line 345</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line357">line 357</a>
             </span>
         </p>
     
@@ -3917,7 +4032,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line390">line 390</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line405">line 405</a>
             </span>
         </p>
     
@@ -4261,7 +4376,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line441">line 441</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line456">line 456</a>
             </span>
         </p>
     

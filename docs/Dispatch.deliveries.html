@@ -402,7 +402,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line165">line 165</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line175">line 175</a>
             </span>
         </p>
     
@@ -994,6 +994,39 @@ const purchasedRate = response.data.purchased_rate</code></pre>
 </tr>
 
   
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>checkout_total</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Integer</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>The total cart/checkout value you submitted as an integer (e.g., $15.76 would be represented as 1576). This value is used to determine the free shipping tier that you can set up on the Dispatch dashboard.</p></td>
+</tr>
+
+  
 
 
         
@@ -1040,7 +1073,7 @@ const purchasedRate = response.data.purchased_rate</code></pre>
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line100">line 100</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line102">line 102</a>
             </span>
         </p>
     
@@ -1118,7 +1151,14 @@ const parcel = {
    weight: 10 // pounds
 }
 
-const response = await dispatch.deliveries.create(sender, recipient, [parcel])
+//if you wanted to add options, like the checkout_total, you can do so in the fourth argument
+//if you don't want to pass additional options, just don't pass the fourth argument
+const options = {
+   checkout_total: 10000 //this would be $100.00 since values are stored as integers
+}
+
+
+const response = await dispatch.deliveries.create(sender, recipient, [parcel], options)
 const delivery = response.data //this will have the delivery object</code></pre>
     
 
@@ -1249,6 +1289,52 @@ const delivery = response.data //this will have the delivery object</code></pre>
   
 
   <td class="description last"><p>The page you want to deliveries to start at. For example, a limit of 15 with a page value of 3, would return deliveries 30 - 45. The response object for the .list() method will have a pagination property which you can use to determine if there are more values in the database.</p></td>
+</tr>
+
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>location</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">integer</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Add a location ID the get just results from a specific location</p></td>
+</tr>
+
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>status</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">integer</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Will filter results based on statuses. Available options are: <code>all (default)</code>, <code>completed</code>, <code>outstanding</code>, <code>error</code>. <code>completed</code> will respond with any package that has gone through its lifecycle. Most often this is delivered but will include errors suck as <code>package_lost</code>. <code>outstanding</code> will respond with any package that is not yet completed its lifecycle, not including errors. <code>error</code> will respond with every package that has an error.</p></td>
 </tr>
 
   
@@ -1492,7 +1578,7 @@ if (data.pagination.has_more) {
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line203">line 203</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line213">line 213</a>
             </span>
         </p>
     
