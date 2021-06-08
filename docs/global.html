@@ -66,7 +66,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Namespaces</h3><ul><li><a href="Dispatch.deliveries.html">deliveries</a></li></ul><h3>Classes</h3><ul><li><a href="Dispatch.html">Dispatch</a></li></ul><h3><a href="global.html">Global</a></h3></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Namespaces</h3><ul><li><a href="Dispatch.deliveries.html">deliveries</a></li><li><a href="Dispatch.locations.html">locations</a></li></ul><h3>Classes</h3><ul><li><a href="Dispatch.html">Dispatch</a></li></ul><h3><a href="global.html">Global</a></h3></div>
                 
             </nav>
         </div>
@@ -462,7 +462,30 @@
 
     
 
-    <td class="description last"><p>The grace period that an on_demand courier will wait for and the fees for going over it.</p></td>
+    <td class="description last"><p>The grace period that an on_demand courier will wait for a delivery. If the sender is not ready, the grace period object explains the fees that will be incurred.</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>billed_amount</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The amount as an integer that this delivery was billed for in the event of a grace period violation.</p></td>
 </tr>
 
   
@@ -485,7 +508,7 @@
 
     
 
-    <td class="description last"><p>The grace period fee as an integer.</p></td>
+    <td class="description last"><p>The grace period fee as an integer This it the fee that is charged per minute.</p></td>
 </tr>
 
   
@@ -509,6 +532,58 @@
     
 
     <td class="description last"><p>The amount of minutes that the grace period is good for.</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>payment_status</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+|
+
+<span class="param-type">null</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>This specifies the status of the payment that was collected</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>wait_seconds</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+|
+
+<span class="param-type">null</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>This is the duration in seconds that the courier waited for the delivery.</p></td>
 </tr>
 
   
@@ -579,7 +654,7 @@
 
     
 
-    <td class="description last"><p>The url from which you can download your label. This URL, can be accessed for 24 hours until it expires. Each time that you retrieve a delivery, a new label url is generated for you.</p></td>
+    <td class="description last"><p>The url from which you can download your label. This URL, can be accessed for 48 hours until it expires. Each time that you retrieve a delivery, a new label url is generated for you.</p></td>
 </tr>
 
         
@@ -718,29 +793,6 @@
     
 
     <td class="description last"><p>An array of parcel objects, which are the boxes and items that were being transported.</p></td>
-</tr>
-
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>pickup_wait_seconds</code></td>
-    
-
-    <td class="type">
-    
-        
-<span class="param-type">integer</span>
-
-
-    
-    </td>
-
-    
-
-    
-
-    <td class="description last"><p>The amount of seconds that an on demand courier needed to wait after they arrived to pickup the package until it was marked as picked up.</p></td>
 </tr>
 
         
@@ -1185,7 +1237,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line343">line 343</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line402">line 402</a>
             </span>
         </p>
     
@@ -1711,7 +1763,7 @@
 
     
 
-    <td class="description last"><p>tTe phone number to contact this entity.</p></td>
+    <td class="description last"><p>The phone number to contact this entity.</p></td>
 </tr>
 
         
@@ -1808,7 +1860,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line390">line 390</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line451">line 451</a>
             </span>
         </p>
     
@@ -2226,7 +2278,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line501">line 501</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line565">line 565</a>
             </span>
         </p>
     
@@ -2303,7 +2355,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line480">line 480</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line544">line 544</a>
             </span>
         </p>
     
@@ -2587,7 +2639,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line490">line 490</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line554">line 554</a>
             </span>
         </p>
     
@@ -3054,7 +3106,7 @@
       
 <tr class="deep-level-1">
     
-        <td class="name"><code>fee</code></td>
+        <td class="name"><code>billed_amount</code></td>
     
 
     <td class="type">
@@ -3070,7 +3122,33 @@
 
     
 
-    <td class="description last"><p>The grace period fee as an integer.</p></td>
+    <td class="description last"><p>The amount that you were charged for going over a courier's grace period.</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>fee</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+|
+
+<span class="param-type">null</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The amount that you were charged for going over a courier's grace period.</p></td>
 </tr>
 
   
@@ -3084,6 +3162,9 @@
     
         
 <span class="param-type">integer</span>
+|
+
+<span class="param-type">null</span>
 
 
     
@@ -3094,6 +3175,58 @@
     
 
     <td class="description last"><p>The amount of minutes that the grace period is good for.</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>payment_status</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+|
+
+<span class="param-type">null</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The status of your payment.</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>wait_seconds</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">integer</span>
+|
+
+<span class="param-type">null</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The amount of seconds the courier waited for.</p></td>
 </tr>
 
   
@@ -3708,7 +3841,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line417">line 417</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line478">line 478</a>
             </span>
         </p>
     
@@ -4055,7 +4188,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line465">line 465</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line529">line 529</a>
             </span>
         </p>
     
@@ -4399,7 +4532,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line516">line 516</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line580">line 580</a>
             </span>
         </p>
     

@@ -66,7 +66,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Namespaces</h3><ul><li><a href="Dispatch.deliveries.html">deliveries</a></li></ul><h3>Classes</h3><ul><li><a href="Dispatch.html">Dispatch</a></li></ul><h3><a href="global.html">Global</a></h3></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Namespaces</h3><ul><li><a href="Dispatch.deliveries.html">deliveries</a></li><li><a href="Dispatch.locations.html">locations</a></li></ul><h3>Classes</h3><ul><li><a href="Dispatch.html">Dispatch</a></li></ul><h3><a href="global.html">Global</a></h3></div>
                 
             </nav>
         </div>
@@ -134,7 +134,7 @@
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line30">line 30</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line31">line 31</a>
             </span>
         </p>
     
@@ -1139,7 +1139,7 @@ const purchasedRate = response.data.purchased_rate</code></pre>
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line102">line 102</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line103">line 103</a>
             </span>
         </p>
     
@@ -1269,7 +1269,6 @@ const options = {
        order_id: 987654321
        temp_value: null //passing null will delete the key, if you had one saved before
    }
-
 }
 
 
@@ -1507,7 +1506,7 @@ dispatch.deliveries.create(sender, recipient, [parcel], options).then((response)
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line62">line 62</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line63">line 63</a>
             </span>
         </p>
     
@@ -1758,7 +1757,7 @@ if (data.pagination.has_more) {
         <pre class="prettyprint"><code>//a refund can only be done on a purchased label that has not been used
 //refunds for on demand couriers need to happen within 5 minutes
 
-const response = dispatch.deliveries.refund("del_28374n8iudshf3nqifub")</code></pre>
+const response = await dispatch.deliveries.refund("del_28374n8iudshf3nqifub")</code></pre>
     
 
 
@@ -1888,7 +1887,7 @@ const response = dispatch.deliveries.refund("del_28374n8iudshf3nqifub")</code></
         <p class="tag-source">
             <a href="dispatch.js.html" class="button">View Source</a>
             <span>
-                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line36">line 36</a>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line37">line 37</a>
             </span>
         </p>
     
@@ -1944,6 +1943,589 @@ const response = dispatch.deliveries.refund("del_28374n8iudshf3nqifub")</code></
     
         <pre class="prettyprint"><code>const response = await dispatch.deliveries.retrieve("del_fjdsklfju8jisjfdisoiu89j")
 const delivery = response.data //this will contain the delivery object</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".update">
+        <a class="href-link" href="#.update">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                update<span class="signature">(delivery_id, update<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Response">Response</a>>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Update a delivery</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+            <th>Attributes</th>
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>delivery_id</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>The ID of the delivery you want to update</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>update</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Object</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>An object of the fields you want to update</p></td>
+</tr>
+
+  
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>sender</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Object</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>The details about there this package is coming from.</p></td>
+</tr>
+
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>sender.name</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>The name of the sender. This could be a company name or a person's name.</p></td>
+</tr>
+
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>sender.email</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>The email of the sender. For on demand deliveries, this email will be used by the courier to contact the sender in case of any issues.</p></td>
+</tr>
+
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>sender.phone</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>The phone number of this sender that an on demand courier could use to contact this sender if there is an issue.</p></td>
+</tr>
+
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>recipient</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Object</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>The details about there this package is coming from.</p></td>
+</tr>
+
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>recipient.name</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>The name of the sender. This could be a company name or a person's name.</p></td>
+</tr>
+
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>recipient.email</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>The email of the sender. For on demand deliveries, this email will be used by the courier to contact the sender in case of any issues.</p></td>
+</tr>
+
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>recipient.phone</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>The phone number of this recipient that an on demand courier could use to contact this recipient if there is an issue.</p></td>
+</tr>
+
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>options</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Object</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>Additional options to include in your delivery.</p></td>
+</tr>
+
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>options.metadata</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Integer</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>You can add metadata as key-value pairs to a delivery. To remove a property, pass <code>null</code> as the value. If you want to remove all key value pairs, pass an empty object.</p></td>
+</tr>
+
+  
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="dispatch.js.html" class="button">View Source</a>
+            <span>
+                <a href="dispatch.js.html">dispatch.js</a>, <a href="dispatch.js.html#line303">line 303</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>Returns the response object.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">Promise.&lt;<a href="global.html#Response">Response</a>></span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>// you can update emails, names, phone numbers, and metadata for the delivery
+// if you want to update the delivery address you will have to create a new delivery.
+
+const update = {
+   sender: {
+      name: "Dispatch Brewery",
+      email: "brewery@getdispatch.app",
+      phone: "1234567890"
+   },
+   recipient: {
+      phone: "1234567890" //only want to update the phone number for the recipient
+   },
+   options: {
+      // Metadata is optional information that you can attach to a delivery
+      metadata: {
+         timestamp: new Date(Date.now()),
+         updated_by: "Server Admin"
+      }
+   }
+}
+
+const response = await dispatch.deliveries.update("del_28374n8iudshf3nqifub", update)</code></pre>
     
 
 
