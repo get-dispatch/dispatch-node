@@ -35,12 +35,14 @@ Every method returns a chainable promise which can be used instead of a regular 
 const sender = {
   name: "Dispatch Roasters",
   email: "roasters@getdispatch.app",
+  phone: "4844836699",
   location_id: "loc_1uzCQL4cTjjw3vRfE2qYk1",
 };
 
 const recipient = {
   name: "Jamie Jones",
   email: "jamie.jones@getdispatch.app",
+  phone: "4844836699",
   address: {
     address_line1: "500 7th Ave",
     city: "New York",
@@ -54,10 +56,22 @@ const parcel = {
   width: 10, // inches
   height: 10, // inches
   weight: 5.5, // pounds
+  item_description: "Coffee", //optional
+  special_handling: "Fragile", //optional
+};
+
+//options are completely optional. You can omit the whole object
+//or any properties from the object
+const options = {
+  checkout_total: 5000, //$50.00
+  verify_address: false,
+  metadata: {
+    my_custom_id: "123456789",
+  },
 };
 
 dispatch.deliveries
-  .create(sender, recipient, [parcel]) //parcel is passed in an array since you can pass multiple parcels as part of one delivery
+  .create(sender, recipient, [parcel], options) //parcel is passed in an array since you can pass multiple parcels as part of one delivery
   .then((response) => {
     const delivery = response.data;
 
