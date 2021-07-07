@@ -68,7 +68,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Namespaces</h3><ul><li><a href="Dispatch.deliveries.html">deliveries</a></li><li><a href="Dispatch.locations.html">locations</a></li></ul><h3>Classes</h3><ul><li><a href="Dispatch.html">Dispatch</a></li></ul><h3><a href="global.html">Global</a></h3></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Namespaces</h3><ul><li><a href="Dispatch.deliveries.html">deliveries</a></li><li><a href="Dispatch.locations.html">locations</a></li><li><a href="Dispatch.profile.html">profile</a></li></ul><h3>Classes</h3><ul><li><a href="Dispatch.html">Dispatch</a></li></ul><h3><a href="global.html">Global</a></h3></div>
                 
             </nav>
         </div>
@@ -95,6 +95,7 @@
 } = require("./modules/deliveries");
 
 const { _retrieveLocation } = require("./modules/locations");
+const { _retrieveProfile } = require("./modules/profile");
 
 const _createNetworkConfig = require("./util/network-config");
 
@@ -207,8 +208,9 @@ module.exports = class Dispatch {
        * @param {Array&lt;Parcel>} parcels - An array of parcels that you want to send.
        * @param {Object} [options] - Additional options to include in your delivery.
        * @param {Array} [options.rate_cards] - An array of rate cards that you want to use for this transaction. These will be used instead of the rate cards you set on your Dispatch Dashboard.
-       * @param {Integer} [options.checkout_total] - The total cart/checkout value you submitted as an integer (e.g., $15.76 would be represented as 1576). This value is used to determine the free shipping tier that you can set up on the Dispatch dashboard.
+       * @param {Integer} [options.checkout_total=0] - The total cart/checkout value you submitted as an integer (e.g., $15.76 would be represented as 1576). This value is used to determine the free shipping tier that you can set up on the Dispatch dashboard.
        * @param {Integer} [options.metadata] - You can add metadata as key-value pairs to a delivery. To remove a property, pass `null` as the value. If you want to remove all key value pairs, pass an empty object.
+       * @param {Boolean} [options.verify_address=true] - If you want Dispatch to verify the sender and recipient addresses
        * @returns {Promise&lt;Response>} Returns the response object. The Response's [data property]{@link Delivery} will be an array of {@link Delivery} objects.
        *
        * @example
@@ -479,6 +481,38 @@ module.exports = class Dispatch {
         });
       },
     };
+
+    /**
+     *
+     * @memberof Dispatch
+     * @namespace profile
+     */
+    this.profile = {
+      /**
+       * Retrieves the sender profile
+       * @memberof Dispatch.profile
+       * @namespace Dispatch.profile.retrieve
+       *
+       * @method retrieve
+       * @returns {Promise&lt;Response>} Returns the response object. The Response's [data property]{@link Profile} will be an array of {@link Profile} objects.
+       *
+       * @example const response = await dispatch.profile.retrieve()
+       * const profile = response.data //this will contain the profile object
+       */
+      retrieve: function (id) {
+        return new Promise((resolve, reject) => {
+          const _config = _createNetworkConfig(apikey, env);
+          _retrieveProfile(id, _config)
+            .then((data) => {
+              resolve(data);
+            })
+            .catch((err) => {
+              console.error(err);
+              reject(err);
+            });
+        });
+      },
+    };
   }
 };
 
@@ -629,23 +663,25 @@ module.exports = class Dispatch {
  */
 
 /**
- * The New Address Object. When creating a new address, you can either send the address a a string value or an object. If you're choosing an object, below are the properties you need to provide.
+ * The New Address Object. When creating a new address, you can either send the address as a string value or an object. If you're choosing an object, below are the properties you need to provide.
  * @typedef {Object} NewAddress
- * @param {string} address_line1 - The street address for this delivery.
- * @param {string} [address_line2] - The second line of the street address if needed.
- * @param {string} city - The name of the city.
- * @param {string} state - The state. This can be the full state name like California or an abbreviation like NY.
- * @param {string} zipcode - The zipcode. Technically this is optional but highly recommended you add this because it makes the address parser much more accurate.
+ * @property {string} address_line1 - The street address for this delivery.
+ * @property {string} [address_line2] - The second line of the street address if needed.
+ * @property {string} city - The name of the city.
+ * @property {string} state - The state. This can be the full state name like California or an abbreviation like NY.
+ * @property {string} zipcode - The zipcode. Technically this is optional but highly recommended you add this because it makes the address parser much more accurate.
  */
 
 /**
  * The Parcel Object. When you create a parcel or retrieve a delivery, you'll always be referencing an array of parcels
  * @typedef {Object} Parcel
+ * @property {String} [package_type] - The type of box you're sending the items in. If you are using a box provided by a carrier, you'll only recieve rates from that carrier plus any on-demand couriers, if avaible.
  * @property {integer} length - The length of the parcel in inches.
  * @property {integer} width - The width of the parcel in inches.
  * @property {integer} height - The height of the parcel in inches.
  * @property {integer} weight - The weight of the parcel in pounds.
- * @property {string} special_handling - Any special handling instructions that will be placed on the label. Limited to 12 characters. If you add more than 12 characters, we'll just use the first 12 instead of returning an error. The reason for the limit is that this is the most amount of characters that we can fit within the bounds of the current label.
+ * @property {string} [special_handling] - Any special handling instructions that will be placed on the label. Limited to 12 characters. If you add more than 12 characters, we'll just use the first 12 instead of returning an error. The reason for the limit is that this is the most amount of characters that we can fit within the bounds of the current label.
+ * @property {string} [item_description] - A description of what you're sending like "Coffee". This can prove useful for basic analytics later on and is a nice touch for the tracking email that can let the recipient know what is in the box.
  * @property {Array&lt;Item>} [items] - you can optionally include items that are in the box. This can be used for one click returns and custom disposition codes in the future.
  */
 
@@ -677,6 +713,59 @@ module.exports = class Dispatch {
  * @property {String} status - The status string.
  * @property {String} substatus - The sub_status string.
  * @property {Array&lt;(String)>} images - An array that includes any images that were added to this tracker. If there are no images, the array will be empty.
+ */
+
+/**
+ * The Profile Object. This describes the profile of the sender who owns the API key
+ * @typedef {Object} Profile
+ * @property {String} id - The ID for this sender
+ * @property {Object} branding - This describes how branding is used by the user
+ * @property {Boolean} branding.emails - If this sender has their logo displayed on email. Requires a Pro plan
+ * @property {Boolean} branding.labels - If this sender has their logo displayed on shipping labels. Requires a Pro plan
+ * @property {Boolean} branding.tracking_notifications - If this sender wants dispatch to send tracking updates to recipients
+ * @property {Integer} lead_time_hours - The lead time this sender requires for deliveries
+ * @property {Array.&lt;Object>} carrier_rate_card - An array of objects that describe the rate cards this user has
+ * @property {String} carrier_rate_card[].carrier_id - The ID of the carrier this rate card is for
+ * @property {Boolean} carrier_rate_card[].active - If this rate card is currently active
+ * @property {String|null} carrier_rate_card[].rate_card_id - The ID of the rate card. The value is null if this rate card is for a Dispatch provided rate card
+ * @property {String} logo_url - the logo url for the sender
+ * @property {String} logo_url_trimmed - the logo url for the sender with the wight space trimmed
+ * @property {Object} requirements - Shows which requirements are needed for this sender. Some features may be unavaible if there are outstanding requirements
+ * @property {Array.&lt;String>} requirements.required_now - A list of all of the requirements that are due now. No deliveries can be created if there are requirements due
+ * @property {Array.&lt;String>} requirements.pending_verification - A list of requirements that are pending verification. These are normally resolved within 24 hours
+ * @property {Array.&lt;String>} requirements.errors - These are errors that the account has. Accounts with errors could result in features of the account being disabled, such as the ability to purchase shipping labels
+ * @property {Array.&lt;String>} requirements.required_later - These are items that will be due in the future.
+ * @property {Object} profile = An object that reflects the profile information for this sender
+ * @property {String} profile.support_phone - The phone number for this sender to be contacted for support
+ * @property {String} profile.support_email - The email for this sender to be contacted for support
+ * @property {String} profile.name - The name of this sender
+ * @property {String} profile.website - The website for this sender
+ * @property {Object.&lt;Address>} profile.address - The headquarters address for the sender.
+ * @property {Integer} created_at - The time in seconds from Epoch that this sender was created
+ * @property {Integer} updated_at - The time in seconds from Epoch that this sender was last updated
+ * @property {Object} labels - The preferences this user has for shipping labels
+ * @property {String} labels.format - The format the labels will come in for the sender.
+ */
+
+/**
+ * The Address Object
+ * @typedef {Object} Address
+ * @property {String} street_number
+ * @property {String} state
+ * @property {String} city
+ * @property {String} street_name
+ * @property {String} state_name - The same as state
+ * @property {String} postal_code - the same as zip code but more common name in other countires
+ * @property {String} timezone
+ * @property {String} street_suffix - the street suffix such as "Dr" of "St"
+ * @property {String} state_abbreviation
+ * @property {String} address_line1
+ * @property {(String|null)} address_line2
+ * @property {String} zipcode
+ * @property {Boolean} verified - If this address has been verified by USPS
+ * @property {String} formatted_address - The full string of the address
+ * @property {String} textarea - The formatted address with "\r" breaks for it to be formatted nicely if you render it into a textarea
+ * @property {String} place_name - The same as the city field
  */
 </code></pre>
         </article>
