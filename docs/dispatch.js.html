@@ -86,16 +86,16 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>const {
-  _retrieveDelivery,
-  _listDeliveries,
-  _createDelivery,
-  _purchaseDelivery,
-  _refundDelivery,
-  _updateDelivery,
+  retrieveDelivery,
+  listDeliveries,
+  createDelivery,
+  purchaseDelivery,
+  refundDelivery,
+  updateDelivery,
 } = require("./modules/deliveries");
 
-const { _retrieveLocation } = require("./modules/locations");
-const { _retrieveProfile } = require("./modules/profile");
+const { retrieveLocation } = require("./modules/locations");
+const { retrieveProfile } = require("./modules/profile");
 
 const _createNetworkConfig = require("./util/network-config");
 
@@ -137,7 +137,7 @@ module.exports = class Dispatch {
       retrieve: function (id) {
         return new Promise((resolve, reject) => {
           const _config = _createNetworkConfig(apikey, env);
-          _retrieveDelivery(id, _config)
+          retrieveDelivery(id, _config)
             .then((data) => {
               resolve(data);
             })
@@ -177,7 +177,7 @@ module.exports = class Dispatch {
       list: function (options) {
         return new Promise((resolve, reject) => {
           const _config = _createNetworkConfig(apikey, env);
-          _listDeliveries(options, _config)
+          listDeliveries(options, _config)
             .then((data) => {
               resolve(data);
             })
@@ -308,7 +308,7 @@ module.exports = class Dispatch {
       create: function (sender, recipient, parcels, options) {
         return new Promise((resolve, reject) => {
           const _config = _createNetworkConfig(apikey, env);
-          _createDelivery(sender, recipient, parcels, options, _config)
+          createDelivery(sender, recipient, parcels, options, _config)
             .then((data) => {
               resolve(data);
             })
@@ -347,7 +347,7 @@ module.exports = class Dispatch {
       buy: function (delivery_id, rate_id, options = {}) {
         return new Promise((resolve, reject) => {
           const _config = _createNetworkConfig(apikey, env);
-          _purchaseDelivery(delivery_id, rate_id, options, _config)
+          purchaseDelivery(delivery_id, rate_id, options, _config)
             .then((data) => {
               resolve(data);
             })
@@ -378,7 +378,7 @@ module.exports = class Dispatch {
       refund: function (delivery_id) {
         return new Promise((resolve, reject) => {
           const _config = _createNetworkConfig(apikey, env);
-          _refundDelivery(delivery_id, _config)
+          refundDelivery(delivery_id, _config)
             .then((data) => {
               resolve(data);
             })
@@ -437,7 +437,7 @@ module.exports = class Dispatch {
       update: function (delivery_id, update) {
         return new Promise((resolve, reject) => {
           const _config = _createNetworkConfig(apikey, env);
-          _updateDelivery(delivery_id, update, _config)
+          updateDelivery(delivery_id, update, _config)
             .then((data) => {
               resolve(data);
             })
@@ -470,7 +470,7 @@ module.exports = class Dispatch {
       retrieve: function (id) {
         return new Promise((resolve, reject) => {
           const _config = _createNetworkConfig(apikey, env);
-          _retrieveLocation(id, _config)
+          retrieveLocation(id, _config)
             .then((data) => {
               resolve(data);
             })
@@ -502,7 +502,7 @@ module.exports = class Dispatch {
       retrieve: function (id) {
         return new Promise((resolve, reject) => {
           const _config = _createNetworkConfig(apikey, env);
-          _retrieveProfile(id, _config)
+          retrieveProfile(_config)
             .then((data) => {
               resolve(data);
             })
