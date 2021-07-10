@@ -47,9 +47,17 @@ program
 program
   .command("deliveries.refund")
   .description("Refunds a delivery")
-  .argument("<refund>", "The ID of the delivery")
-  .action((delivery, rate) => {
+  .argument("<delivery>", "The ID of the delivery")
+  .action((delivery) => {
     deliveries.refund(delivery);
+  });
+
+program
+  .command("deliveries.update")
+  .description("Updates a delivery")
+  .argument("<deliveryId>", "The ID of the delivery")
+  .action((deliveryId) => {
+    deliveries.update(deliveryId);
   });
 
 program
@@ -71,6 +79,9 @@ program
       .list()
       .then(() => {
         return deliveries.create();
+      })
+      .then((res) => {
+        return deliveries.update(res.data.id);
       })
       .then((res) => {
         return deliveries.buy(res.data.id, res.data.rates[0].id);

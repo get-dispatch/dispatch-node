@@ -135,10 +135,39 @@ const refund = (deliveryId) => {
   });
 };
 
+const update = (deliveryId) => {
+  return new Promise((resolve, reject) => {
+    const start_time = process.hrtime();
+    console.log("Updating delivery...");
+
+    const update = {
+      sender: {
+        name: "Dispatch Name Update",
+      },
+    };
+
+    dispatch.deliveries
+      .update(deliveryId, update)
+      .then((res) => {
+        console.log(`${res.message}`.green.bold);
+        console.log(`${logSymbols.info}  Task ran in ${duration(start_time)}`);
+        console.log("");
+        console.log("");
+        resolve(res);
+      })
+      .catch((err) => {
+        console.error(`${err.message}`.bgRed);
+        reject(err);
+        process.exit(1);
+      });
+  });
+};
+
 module.exports = {
   list,
   create,
   buy,
   retrieve,
   refund,
+  update,
 };

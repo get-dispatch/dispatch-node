@@ -1,6 +1,6 @@
 {
   "name": "dispatch-node",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "The node wrapper for the dispatch Sender API.",
   "main": "lib/dispatch.js",
   "scripts": {
@@ -10,9 +10,11 @@
     "deliveries.buy": "node ./bin/index deliveries.buy",
     "deliveries.retrieve": "node ./bin/index deliveries.retrieve",
     "deliveries.refund": "node ./bin/index deliveries.refund",
+    "deliveries.update": "node ./bin/index deliveries.update",
     "profile.retrieve": "node ./bin/index profile.retrieve",
     "test": "node ./bin/index test",
-    "publish": "node ./bin/index test && npm publish"
+    "publish": "node ./bin/index test && npm publish",
+    "deploy": "node ./bin/index test && npm publish"
   },
   "repository": {
     "type": "git",
